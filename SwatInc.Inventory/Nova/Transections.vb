@@ -16,9 +16,9 @@
     End Class
 
     Public Class Users
-        Public Property Name As String
-        Public Property Username As String
-        Public Property UsersId As Integer
+        Public Property Name() As String
+        Public Property Username() As String
+        Public Property UsersId() As Integer
     End Class
 
 End Namespace
