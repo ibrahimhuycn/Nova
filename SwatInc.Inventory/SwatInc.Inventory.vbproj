@@ -121,6 +121,26 @@
       <DependentUpon>201809151711045_AddQuantityFieldToTransactions.vb</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201809151711045_AddQuantityFieldToTransactions.vb" />
+    <Compile Include="Migrations\201809151716402_AddCurrentStockLevelsTable.Designer.vb">
+      <DependentUpon>201809151716402_AddCurrentStockLevelsTable.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809151716402_AddCurrentStockLevelsTable.vb" />
+    <Compile Include="Migrations\201809151722345_AddStockLevelSettingsTable.Designer.vb">
+      <DependentUpon>201809151722345_AddStockLevelSettingsTable.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809151722345_AddStockLevelSettingsTable.vb" />
+    <Compile Include="Migrations\201809151726193_AddPurchaseOrdersTable.Designer.vb">
+      <DependentUpon>201809151726193_AddPurchaseOrdersTable.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809151726193_AddPurchaseOrdersTable.vb" />
+    <Compile Include="Migrations\201809151729362_AddLocationsTable.Designer.vb">
+      <DependentUpon>201809151729362_AddLocationsTable.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809151729362_AddLocationsTable.vb" />
+    <Compile Include="Migrations\201809151732477_AddItems_LocationsTable.Designer.vb">
+      <DependentUpon>201809151732477_AddItems_LocationsTable.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809151732477_AddItems_LocationsTable.vb" />
     <Compile Include="Migrations\Configuration.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -137,10 +157,15 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Nova\CurrentStockLevels.vb" />
     <Compile Include="Nova\Items.vb" />
+    <Compile Include="Nova\Items_Locations.vb" />
     <Compile Include="Nova\ItemTypes.vb" />
+    <Compile Include="Nova\Locations.vb" />
     <Compile Include="Nova\Lots.vb" />
     <Compile Include="Nova\NovaContext.vb" />
+    <Compile Include="Nova\PurchaseOrders.vb" />
+    <Compile Include="Nova\StockLevelSettings.vb" />
     <Compile Include="Nova\TransactionType.vb" />
     <Compile Include="Nova\Transections.vb" />
     <Compile Include="Nova\Users.vb" />
@@ -169,6 +194,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201809151711045_AddQuantityFieldToTransactions.resx">
       <DependentUpon>201809151711045_AddQuantityFieldToTransactions.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809151716402_AddCurrentStockLevelsTable.resx">
+      <DependentUpon>201809151716402_AddCurrentStockLevelsTable.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809151722345_AddStockLevelSettingsTable.resx">
+      <DependentUpon>201809151722345_AddStockLevelSettingsTable.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809151726193_AddPurchaseOrdersTable.resx">
+      <DependentUpon>201809151726193_AddPurchaseOrdersTable.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809151729362_AddLocationsTable.resx">
+      <DependentUpon>201809151729362_AddLocationsTable.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809151732477_AddItems_LocationsTable.resx">
+      <DependentUpon>201809151732477_AddItems_LocationsTable.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
