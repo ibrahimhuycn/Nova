@@ -89,14 +89,38 @@
       <DependentUpon>InventoryUI.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Migrations\201809141755216_InitialModel.Designer.vb">
-      <DependentUpon>201809141755216_InitialModel.vb</DependentUpon>
+    <Compile Include="Migrations\201809151641020_AddTransactionTable.Designer.vb">
+      <DependentUpon>201809151641020_AddTransactionTable.vb</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201809141755216_InitialModel.vb" />
-    <Compile Include="Migrations\201809141757238_AddUsersTable.Designer.vb">
-      <DependentUpon>201809141757238_AddUsersTable.vb</DependentUpon>
+    <Compile Include="Migrations\201809151641020_AddTransactionTable.vb" />
+    <Compile Include="Migrations\201809151650150_AddFKItemsToTransactions.Designer.vb">
+      <DependentUpon>201809151650150_AddFKItemsToTransactions.vb</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201809141757238_AddUsersTable.vb" />
+    <Compile Include="Migrations\201809151650150_AddFKItemsToTransactions.vb" />
+    <Compile Include="Migrations\201809151653044_AddFKTypeToTransactions.Designer.vb">
+      <DependentUpon>201809151653044_AddFKTypeToTransactions.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809151653044_AddFKTypeToTransactions.vb" />
+    <Compile Include="Migrations\201809151654279_AddFKUsersToTransactions.Designer.vb">
+      <DependentUpon>201809151654279_AddFKUsersToTransactions.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809151654279_AddFKUsersToTransactions.vb" />
+    <Compile Include="Migrations\201809151659284_AddLotsTableAndRelationships.Designer.vb">
+      <DependentUpon>201809151659284_AddLotsTableAndRelationships.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809151659284_AddLotsTableAndRelationships.vb" />
+    <Compile Include="Migrations\201809151703527_AddItemTypesTableAndRelationships.Designer.vb">
+      <DependentUpon>201809151703527_AddItemTypesTableAndRelationships.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809151703527_AddItemTypesTableAndRelationships.vb" />
+    <Compile Include="Migrations\201809151709149_AddTimeFieldToTransactions.Designer.vb">
+      <DependentUpon>201809151709149_AddTimeFieldToTransactions.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809151709149_AddTimeFieldToTransactions.vb" />
+    <Compile Include="Migrations\201809151711045_AddQuantityFieldToTransactions.Designer.vb">
+      <DependentUpon>201809151711045_AddQuantityFieldToTransactions.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809151711045_AddQuantityFieldToTransactions.vb" />
     <Compile Include="Migrations\Configuration.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -113,15 +137,38 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Nova\Items.vb" />
+    <Compile Include="Nova\ItemTypes.vb" />
+    <Compile Include="Nova\Lots.vb" />
     <Compile Include="Nova\NovaContext.vb" />
+    <Compile Include="Nova\TransactionType.vb" />
     <Compile Include="Nova\Transections.vb" />
+    <Compile Include="Nova\Users.vb" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201809141755216_InitialModel.resx">
-      <DependentUpon>201809141755216_InitialModel.vb</DependentUpon>
+    <EmbeddedResource Include="Migrations\201809151641020_AddTransactionTable.resx">
+      <DependentUpon>201809151641020_AddTransactionTable.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201809141757238_AddUsersTable.resx">
-      <DependentUpon>201809141757238_AddUsersTable.vb</DependentUpon>
+    <EmbeddedResource Include="Migrations\201809151650150_AddFKItemsToTransactions.resx">
+      <DependentUpon>201809151650150_AddFKItemsToTransactions.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809151653044_AddFKTypeToTransactions.resx">
+      <DependentUpon>201809151653044_AddFKTypeToTransactions.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809151654279_AddFKUsersToTransactions.resx">
+      <DependentUpon>201809151654279_AddFKUsersToTransactions.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809151659284_AddLotsTableAndRelationships.resx">
+      <DependentUpon>201809151659284_AddLotsTableAndRelationships.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809151703527_AddItemTypesTableAndRelationships.resx">
+      <DependentUpon>201809151703527_AddItemTypesTableAndRelationships.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809151709149_AddTimeFieldToTransactions.resx">
+      <DependentUpon>201809151709149_AddTimeFieldToTransactions.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809151711045_AddQuantityFieldToTransactions.resx">
+      <DependentUpon>201809151711045_AddQuantityFieldToTransactions.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>

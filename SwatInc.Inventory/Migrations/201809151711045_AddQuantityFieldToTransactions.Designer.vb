@@ -6,14 +6,14 @@ Imports System.Resources
 
 Namespace Migrations
     <GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")>
-    Public NotInheritable Partial Class AddUsersTable
+    Public NotInheritable Partial Class AddQuantityFieldToTransactions
         Implements IMigrationMetadata
     
-        Private ReadOnly Resources As New ResourceManager(GetType(AddUsersTable))
+        Private ReadOnly Resources As New ResourceManager(GetType(AddQuantityFieldToTransactions))
         
         Private ReadOnly Property IMigrationMetadata_Id() As String Implements IMigrationMetadata.Id
             Get
-                Return "201809141757238_AddUsersTable"
+                Return "201809151711045_AddQuantityFieldToTransactions"
             End Get
         End Property
         

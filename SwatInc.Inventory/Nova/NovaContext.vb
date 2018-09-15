@@ -9,9 +9,12 @@ Namespace Nova
             MyBase.New("NovaConnectionString")
         End Sub
 
-        Public Property Transections() As DbSet(Of Transections)
-        Public Property Users() As DbSet(Of Users)
+        Public Property Items() As DbSet(Of Items)
+        Public Property Lots() As DbSet(Of Lots)
+        Public Property Transactions() As DbSet(Of Transactions)
 
+        Public Property Type() As DbSet(Of TransactionType)
+        Public Property Users() As DbSet(Of Users)
     End Class
 
 End Namespace
