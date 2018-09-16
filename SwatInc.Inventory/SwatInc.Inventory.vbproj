@@ -141,6 +141,10 @@
       <DependentUpon>201809151732477_AddItems_LocationsTable.vb</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201809151732477_AddItems_LocationsTable.vb" />
+    <Compile Include="Migrations\201809161145579_AddPackSizesTable.Designer.vb">
+      <DependentUpon>201809161145579_AddPackSizesTable.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809161145579_AddPackSizesTable.vb" />
     <Compile Include="Migrations\Configuration.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -164,6 +168,7 @@
     <Compile Include="Nova\Locations.vb" />
     <Compile Include="Nova\Lots.vb" />
     <Compile Include="Nova\NovaContext.vb" />
+    <Compile Include="Nova\PackSizes.vb" />
     <Compile Include="Nova\PurchaseOrders.vb" />
     <Compile Include="Nova\StockLevelSettings.vb" />
     <Compile Include="Nova\TransactionType.vb" />
@@ -209,6 +214,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201809151732477_AddItems_LocationsTable.resx">
       <DependentUpon>201809151732477_AddItems_LocationsTable.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809161145579_AddPackSizesTable.resx">
+      <DependentUpon>201809161145579_AddPackSizesTable.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>

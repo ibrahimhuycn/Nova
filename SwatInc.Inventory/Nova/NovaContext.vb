@@ -14,6 +14,7 @@ Namespace Nova
         Public Property Items_Locations() As DbSet(Of Items_Locations)
         Public Property Locations() As DbSet(Of Locations)
         Public Property Lots() As DbSet(Of Lots)
+        Public Property PackSizes() As DbSet(Of PackSizes)
         Public Property PurchaseOrders() As DbSet(Of PurchaseOrders)
         Public Property StockLevelSettings() As DbSet(Of StockLevelSettings)
         Public Property Transactions() As DbSet(Of Transactions)
