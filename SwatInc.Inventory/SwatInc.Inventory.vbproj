@@ -145,6 +145,10 @@
       <DependentUpon>201809161145579_AddPackSizesTable.vb</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201809161145579_AddPackSizesTable.vb" />
+    <Compile Include="Migrations\201809182123393_EditPurchaseOrderTableToIncludeRequiredDate.Designer.vb">
+      <DependentUpon>201809182123393_EditPurchaseOrderTableToIncludeRequiredDate.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809182123393_EditPurchaseOrderTableToIncludeRequiredDate.vb" />
     <Compile Include="Migrations\Configuration.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -217,6 +221,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201809161145579_AddPackSizesTable.resx">
       <DependentUpon>201809161145579_AddPackSizesTable.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809182123393_EditPurchaseOrderTableToIncludeRequiredDate.resx">
+      <DependentUpon>201809182123393_EditPurchaseOrderTableToIncludeRequiredDate.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
