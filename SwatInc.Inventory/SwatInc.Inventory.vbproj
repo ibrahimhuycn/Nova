@@ -174,6 +174,18 @@
       <DependentUpon>201809251538286_AddUserAccessLevelsAndHashField.vb</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201809251538286_AddUserAccessLevelsAndHashField.vb" />
+    <Compile Include="Migrations\201809251632252_AddTableLaboratory.Designer.vb">
+      <DependentUpon>201809251632252_AddTableLaboratory.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809251632252_AddTableLaboratory.vb" />
+    <Compile Include="Migrations\201809251636283_AddForeignKeyLabIdToTransactions.Designer.vb">
+      <DependentUpon>201809251636283_AddForeignKeyLabIdToTransactions.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809251636283_AddForeignKeyLabIdToTransactions.vb" />
+    <Compile Include="Migrations\201809251641428_AddLaboratory_ItemsJoinTable.Designer.vb">
+      <DependentUpon>201809251641428_AddLaboratory_ItemsJoinTable.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809251641428_AddLaboratory_ItemsJoinTable.vb" />
     <Compile Include="Migrations\Configuration.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -206,6 +218,7 @@
     <Compile Include="Nova\Items.vb" />
     <Compile Include="Nova\Items_Locations.vb" />
     <Compile Include="Nova\ItemTypes.vb" />
+    <Compile Include="Nova\Laboratory.vb" />
     <Compile Include="Nova\Locations.vb" />
     <Compile Include="Nova\Lots.vb" />
     <Compile Include="Nova\NovaContext.vb" />
@@ -214,6 +227,7 @@
     <Compile Include="Nova\StockLevelSettings.vb" />
     <Compile Include="Nova\TransactionType.vb" />
     <Compile Include="Nova\Transections.vb" />
+    <Compile Include="Nova\UserAccessLevel.vb" />
     <Compile Include="Nova\Users.vb" />
   </ItemGroup>
   <ItemGroup>
@@ -270,6 +284,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201809251538286_AddUserAccessLevelsAndHashField.resx">
       <DependentUpon>201809251538286_AddUserAccessLevelsAndHashField.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809251632252_AddTableLaboratory.resx">
+      <DependentUpon>201809251632252_AddTableLaboratory.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809251636283_AddForeignKeyLabIdToTransactions.resx">
+      <DependentUpon>201809251636283_AddForeignKeyLabIdToTransactions.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809251641428_AddLaboratory_ItemsJoinTable.resx">
+      <DependentUpon>201809251641428_AddLaboratory_ItemsJoinTable.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\licenses.licx" />
     <EmbeddedResource Include="My Project\Resources.resx">

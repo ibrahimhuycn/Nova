@@ -1,17 +1,10 @@
 ﻿Namespace Nova
 
-    Public Enum UserAccessLevel
-
-        'Basic
-        Assistant
-
-        'All access except authorizations
-        Technologist
-
-        'Super user
-        InCharge
-
-    End Enum
+    Public Class Laboratory_Items
+        Public Property Id As Integer
+        Public Property Item As Items
+        Public Property Laboratory As Laboratory
+    End Class
 
     Public Class Users
         Public Property AccessLevel As UserAccessLevel

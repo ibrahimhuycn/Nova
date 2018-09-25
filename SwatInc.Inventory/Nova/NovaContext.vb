@@ -12,6 +12,8 @@ Namespace Nova
         Public Property CurrentStockLevels() As DbSet(Of CurrentStockLevels)
         Public Property Items() As DbSet(Of Items)
         Public Property Items_Locations() As DbSet(Of Items_Locations)
+        Public Property Laboratory() As DbSet(Of Laboratory)
+        Public Property Laboratory_Items() As DbSet(Of Laboratory_Items)
         Public Property Locations() As DbSet(Of Locations)
         Public Property Lots() As DbSet(Of Lots)
         Public Property PackSizes() As DbSet(Of PackSizes)
