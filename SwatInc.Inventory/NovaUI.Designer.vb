@@ -24,69 +24,55 @@ Partial Class NovaUI
         Me.NovaRibbon = New DevExpress.XtraBars.Ribbon.RibbonControl()
         Me.BarButtonRequests = New DevExpress.XtraBars.BarButtonItem()
         Me.BarButtonInventory = New DevExpress.XtraBars.BarButtonItem()
+        Me.BarButtonAddItem = New DevExpress.XtraBars.BarButtonItem()
+        Me.BarButtonAddUser = New DevExpress.XtraBars.BarButtonItem()
+        Me.BarButtonChangePassword = New DevExpress.XtraBars.BarButtonItem()
+        Me.BarButtonResetPassword = New DevExpress.XtraBars.BarButtonItem()
+        Me.BarButtonDashboard = New DevExpress.XtraBars.BarButtonItem()
         Me.RibbonPage1 = New DevExpress.XtraBars.Ribbon.RibbonPage()
         Me.RibbonPageGroup1 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
-        Me.RibbonStatusBar = New DevExpress.XtraBars.Ribbon.RibbonStatusBar()
-        Me.BarButtonAddItem = New DevExpress.XtraBars.BarButtonItem()
-        Me.RibbonPage2 = New DevExpress.XtraBars.Ribbon.RibbonPage()
-        Me.RibbonPageGroup2 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
+        Me.RibbonPageGroup4 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.RibbonPage3 = New DevExpress.XtraBars.Ribbon.RibbonPage()
         Me.RibbonPageGroup3 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
-        Me.BarButtonItem1 = New DevExpress.XtraBars.BarButtonItem()
-        Me.BarButtonItem2 = New DevExpress.XtraBars.BarButtonItem()
-        Me.BarButtonItem3 = New DevExpress.XtraBars.BarButtonItem()
+        Me.RibbonStatusBar = New DevExpress.XtraBars.Ribbon.RibbonStatusBar()
+        Me.RibbonPageGroup2 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
+        Me.BarButtonReorder = New DevExpress.XtraBars.BarButtonItem()
+        Me.RequestsMenu = New DevExpress.XtraBars.PopupMenu(Me.components)
+        Me.BarButtonMakePurchaseOrder = New DevExpress.XtraBars.BarButtonItem()
         CType(Me.NovaRibbon, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RequestsMenu, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'NovaRibbon
         '
         Me.NovaRibbon.ExpandCollapseItem.Id = 0
-        Me.NovaRibbon.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.NovaRibbon.ExpandCollapseItem, Me.BarButtonRequests, Me.BarButtonInventory, Me.BarButtonAddItem, Me.BarButtonItem1, Me.BarButtonItem2, Me.BarButtonItem3})
+        Me.NovaRibbon.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.NovaRibbon.ExpandCollapseItem, Me.BarButtonRequests, Me.BarButtonInventory, Me.BarButtonAddItem, Me.BarButtonAddUser, Me.BarButtonChangePassword, Me.BarButtonResetPassword, Me.BarButtonDashboard, Me.BarButtonReorder, Me.BarButtonMakePurchaseOrder})
         Me.NovaRibbon.Location = New System.Drawing.Point(0, 0)
-        Me.NovaRibbon.MaxItemId = 7
+        Me.NovaRibbon.MaxItemId = 2
         Me.NovaRibbon.Name = "NovaRibbon"
-        Me.NovaRibbon.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.RibbonPage1, Me.RibbonPage2, Me.RibbonPage3})
+        Me.NovaRibbon.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.RibbonPage1, Me.RibbonPage3})
         Me.NovaRibbon.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2007
-        Me.NovaRibbon.Size = New System.Drawing.Size(1116, 143)
+        Me.NovaRibbon.Size = New System.Drawing.Size(1273, 143)
         Me.NovaRibbon.StatusBar = Me.RibbonStatusBar
         '
         'BarButtonRequests
         '
-        Me.BarButtonRequests.Caption = "REQUISITION"
+        Me.BarButtonRequests.ActAsDropDown = True
+        Me.BarButtonRequests.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.DropDown
+        Me.BarButtonRequests.Caption = "Requests"
+        Me.BarButtonRequests.DropDownControl = Me.RequestsMenu
         Me.BarButtonRequests.Id = 1
-        Me.BarButtonRequests.ImageOptions.Image = CType(resources.GetObject("BarButtonItem1.ImageOptions.Image"), System.Drawing.Image)
+        Me.BarButtonRequests.ImageOptions.Image = CType(resources.GetObject("BarButtonRequests.ImageOptions.Image"), System.Drawing.Image)
         Me.BarButtonRequests.Name = "BarButtonRequests"
         Me.BarButtonRequests.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
         '
         'BarButtonInventory
         '
-        Me.BarButtonInventory.ActAsDropDown = True
-        Me.BarButtonInventory.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.DropDown
-        Me.BarButtonInventory.Caption = "INVENTORY"
+        Me.BarButtonInventory.Caption = "Inventory"
         Me.BarButtonInventory.Id = 2
-        Me.BarButtonInventory.ImageOptions.Image = CType(resources.GetObject("BarButtonItem2.ImageOptions.Image"), System.Drawing.Image)
+        Me.BarButtonInventory.ImageOptions.Image = CType(resources.GetObject("BarButtonInventory.ImageOptions.Image"), System.Drawing.Image)
         Me.BarButtonInventory.Name = "BarButtonInventory"
         Me.BarButtonInventory.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
-        '
-        'RibbonPage1
-        '
-        Me.RibbonPage1.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.RibbonPageGroup1})
-        Me.RibbonPage1.Name = "RibbonPage1"
-        Me.RibbonPage1.Text = "ITEMS"
-        '
-        'RibbonPageGroup1
-        '
-        Me.RibbonPageGroup1.ItemLinks.Add(Me.BarButtonRequests)
-        Me.RibbonPageGroup1.ItemLinks.Add(Me.BarButtonInventory)
-        Me.RibbonPageGroup1.Name = "RibbonPageGroup1"
-        Me.RibbonPageGroup1.Text = "Requests & inventory"
-        '
-        'RibbonStatusBar
-        '
-        Me.RibbonStatusBar.Location = New System.Drawing.Point(0, 536)
-        Me.RibbonStatusBar.Name = "RibbonStatusBar"
-        Me.RibbonStatusBar.Ribbon = Me.NovaRibbon
-        Me.RibbonStatusBar.Size = New System.Drawing.Size(1116, 31)
         '
         'BarButtonAddItem
         '
@@ -96,59 +82,111 @@ Partial Class NovaUI
         Me.BarButtonAddItem.Name = "BarButtonAddItem"
         Me.BarButtonAddItem.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText
         '
-        'RibbonPage2
+        'BarButtonAddUser
         '
-        Me.RibbonPage2.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.RibbonPageGroup2})
-        Me.RibbonPage2.Name = "RibbonPage2"
-        Me.RibbonPage2.Text = "MANAGE"
+        Me.BarButtonAddUser.Caption = "Add User"
+        Me.BarButtonAddUser.Id = 8
+        Me.BarButtonAddUser.ImageOptions.Image = CType(resources.GetObject("BarButtonItem5.ImageOptions.Image"), System.Drawing.Image)
+        Me.BarButtonAddUser.Name = "BarButtonAddUser"
+        Me.BarButtonAddUser.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
         '
-        'RibbonPageGroup2
+        'BarButtonChangePassword
         '
-        Me.RibbonPageGroup2.ItemLinks.Add(Me.BarButtonItem1)
-        Me.RibbonPageGroup2.ItemLinks.Add(Me.BarButtonItem2)
-        Me.RibbonPageGroup2.Name = "RibbonPageGroup2"
-        Me.RibbonPageGroup2.Text = "Authentication"
+        Me.BarButtonChangePassword.Caption = "Change Password"
+        Me.BarButtonChangePassword.Id = 9
+        Me.BarButtonChangePassword.ImageOptions.Image = CType(resources.GetObject("BarButtonItem6.ImageOptions.Image"), System.Drawing.Image)
+        Me.BarButtonChangePassword.Name = "BarButtonChangePassword"
+        Me.BarButtonChangePassword.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
+        '
+        'BarButtonResetPassword
+        '
+        Me.BarButtonResetPassword.Caption = "Reset Password"
+        Me.BarButtonResetPassword.Id = 10
+        Me.BarButtonResetPassword.ImageOptions.Image = CType(resources.GetObject("BarButtonItem7.ImageOptions.Image"), System.Drawing.Image)
+        Me.BarButtonResetPassword.Name = "BarButtonResetPassword"
+        Me.BarButtonResetPassword.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
+        '
+        'BarButtonDashboard
+        '
+        Me.BarButtonDashboard.Caption = "Dashboard"
+        Me.BarButtonDashboard.Id = 11
+        Me.BarButtonDashboard.ImageOptions.Image = CType(resources.GetObject("BarButtonItem8.ImageOptions.Image"), System.Drawing.Image)
+        Me.BarButtonDashboard.Name = "BarButtonDashboard"
+        Me.BarButtonDashboard.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
+        '
+        'RibbonPage1
+        '
+        Me.RibbonPage1.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.RibbonPageGroup1, Me.RibbonPageGroup4})
+        Me.RibbonPage1.Name = "RibbonPage1"
+        Me.RibbonPage1.Text = "Nova"
+        '
+        'RibbonPageGroup1
+        '
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.BarButtonDashboard)
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.BarButtonRequests)
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.BarButtonInventory)
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.BarButtonReorder)
+        Me.RibbonPageGroup1.Name = "RibbonPageGroup1"
+        Me.RibbonPageGroup1.Text = "Requests And Inventory"
+        '
+        'RibbonPageGroup4
+        '
+        Me.RibbonPageGroup4.ItemLinks.Add(Me.BarButtonAddUser)
+        Me.RibbonPageGroup4.ItemLinks.Add(Me.BarButtonChangePassword)
+        Me.RibbonPageGroup4.ItemLinks.Add(Me.BarButtonResetPassword)
+        Me.RibbonPageGroup4.Name = "RibbonPageGroup4"
+        Me.RibbonPageGroup4.Text = "Users And Authentication"
         '
         'RibbonPage3
         '
         Me.RibbonPage3.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.RibbonPageGroup3})
         Me.RibbonPage3.Name = "RibbonPage3"
-        Me.RibbonPage3.Text = "HELP"
+        Me.RibbonPage3.Text = "Help"
         '
         'RibbonPageGroup3
         '
         Me.RibbonPageGroup3.Name = "RibbonPageGroup3"
         Me.RibbonPageGroup3.Text = "RibbonPageGroup3"
         '
-        'BarButtonItem1
+        'RibbonStatusBar
         '
-        Me.BarButtonItem1.Caption = "ADD"
-        Me.BarButtonItem1.Id = 4
-        Me.BarButtonItem1.ImageOptions.Image = CType(resources.GetObject("BarButtonItem1.ImageOptions.Image1"), System.Drawing.Image)
-        Me.BarButtonItem1.Name = "BarButtonItem1"
-        Me.BarButtonItem1.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        Me.RibbonStatusBar.Location = New System.Drawing.Point(0, 612)
+        Me.RibbonStatusBar.Name = "RibbonStatusBar"
+        Me.RibbonStatusBar.Ribbon = Me.NovaRibbon
+        Me.RibbonStatusBar.Size = New System.Drawing.Size(1273, 31)
         '
-        'BarButtonItem2
+        'RibbonPageGroup2
         '
-        Me.BarButtonItem2.ActAsDropDown = True
-        Me.BarButtonItem2.AllowDrawArrow = False
-        Me.BarButtonItem2.Caption = "CHANGE"
-        Me.BarButtonItem2.Id = 5
-        Me.BarButtonItem2.ImageOptions.Image = CType(resources.GetObject("BarButtonItem2.ImageOptions.Image"), System.Drawing.Image)
-        Me.BarButtonItem2.Name = "BarButtonItem2"
-        Me.BarButtonItem2.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        Me.RibbonPageGroup2.Name = "RibbonPageGroup2"
+        Me.RibbonPageGroup2.Text = "Members | Authentication"
         '
-        'BarButtonItem3
+        'BarButtonReorder
         '
-        Me.BarButtonItem3.Caption = "CHANGE PASSWORD"
-        Me.BarButtonItem3.Id = 6
-        Me.BarButtonItem3.Name = "BarButtonItem3"
+        Me.BarButtonReorder.Caption = "Reorder"
+        Me.BarButtonReorder.Id = 12
+        Me.BarButtonReorder.ImageOptions.Image = CType(resources.GetObject("BarButtonItem9.ImageOptions.Image"), System.Drawing.Image)
+        Me.BarButtonReorder.Name = "BarButtonReorder"
+        Me.BarButtonReorder.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
+        '
+        'RequestsMenu
+        '
+        Me.RequestsMenu.ItemLinks.Add(Me.BarButtonMakePurchaseOrder)
+        Me.RequestsMenu.Name = "RequestsMenu"
+        Me.RequestsMenu.Ribbon = Me.NovaRibbon
+        '
+        'BarButtonMakePurchaseOrder
+        '
+        Me.BarButtonMakePurchaseOrder.Caption = "Make Purchase Order"
+        Me.BarButtonMakePurchaseOrder.Id = 1
+        Me.BarButtonMakePurchaseOrder.ImageOptions.Image = CType(resources.GetObject("BarButtonMakePurchaseOrder.ImageOptions.Image"), System.Drawing.Image)
+        Me.BarButtonMakePurchaseOrder.Name = "BarButtonMakePurchaseOrder"
+        Me.BarButtonMakePurchaseOrder.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
         '
         'NovaUI
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1116, 567)
+        Me.ClientSize = New System.Drawing.Size(1273, 643)
         Me.Controls.Add(Me.RibbonStatusBar)
         Me.Controls.Add(Me.NovaRibbon)
         Me.Name = "NovaUI"
@@ -156,6 +194,7 @@ Partial Class NovaUI
         Me.StatusBar = Me.RibbonStatusBar
         Me.Text = "NovaUI"
         CType(Me.NovaRibbon, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RequestsMenu, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -168,11 +207,15 @@ Partial Class NovaUI
     Friend WithEvents BarButtonRequests As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents BarButtonInventory As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents BarButtonAddItem As DevExpress.XtraBars.BarButtonItem
-    Friend WithEvents BarButtonItem1 As DevExpress.XtraBars.BarButtonItem
-    Friend WithEvents BarButtonItem2 As DevExpress.XtraBars.BarButtonItem
-    Friend WithEvents RibbonPage2 As DevExpress.XtraBars.Ribbon.RibbonPage
-    Friend WithEvents RibbonPageGroup2 As DevExpress.XtraBars.Ribbon.RibbonPageGroup
     Friend WithEvents RibbonPage3 As DevExpress.XtraBars.Ribbon.RibbonPage
     Friend WithEvents RibbonPageGroup3 As DevExpress.XtraBars.Ribbon.RibbonPageGroup
-    Friend WithEvents BarButtonItem3 As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents BarButtonAddUser As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents RibbonPageGroup4 As DevExpress.XtraBars.Ribbon.RibbonPageGroup
+    Friend WithEvents RibbonPageGroup2 As DevExpress.XtraBars.Ribbon.RibbonPageGroup
+    Friend WithEvents BarButtonChangePassword As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents BarButtonResetPassword As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents BarButtonDashboard As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents RequestsMenu As DevExpress.XtraBars.PopupMenu
+    Friend WithEvents BarButtonReorder As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents BarButtonMakePurchaseOrder As DevExpress.XtraBars.BarButtonItem
 End Class
