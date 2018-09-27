@@ -204,6 +204,18 @@
       <DependentUpon>201809251641428_AddLaboratory_ItemsJoinTable.vb</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201809251641428_AddLaboratory_ItemsJoinTable.vb" />
+    <Compile Include="Migrations\201809271656581_AddColumnTypeToItemTypes.Designer.vb">
+      <DependentUpon>201809271656581_AddColumnTypeToItemTypes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809271656581_AddColumnTypeToItemTypes.vb" />
+    <Compile Include="Migrations\201809271722297_DroppedItemTypeFromTransections.Designer.vb">
+      <DependentUpon>201809271722297_DroppedItemTypeFromTransections.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809271722297_DroppedItemTypeFromTransections.vb" />
+    <Compile Include="Migrations\201809271803392_AddTableVendorAndRelationShips.Designer.vb">
+      <DependentUpon>201809271803392_AddTableVendorAndRelationShips.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809271803392_AddTableVendorAndRelationShips.vb" />
     <Compile Include="Migrations\Configuration.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -318,6 +330,15 @@
     <EmbeddedResource Include="Migrations\201809251641428_AddLaboratory_ItemsJoinTable.resx">
       <DependentUpon>201809251641428_AddLaboratory_ItemsJoinTable.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809271656581_AddColumnTypeToItemTypes.resx">
+      <DependentUpon>201809271656581_AddColumnTypeToItemTypes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809271722297_DroppedItemTypeFromTransections.resx">
+      <DependentUpon>201809271722297_DroppedItemTypeFromTransections.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809271803392_AddTableVendorAndRelationShips.resx">
+      <DependentUpon>201809271803392_AddTableVendorAndRelationShips.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\licenses.licx" />
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -384,6 +405,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\All Labs1.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

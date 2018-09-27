@@ -23,6 +23,7 @@ Namespace Nova
 
         Public Property Type() As DbSet(Of TransactionType)
         Public Property Users() As DbSet(Of Users)
+        Public Property Vendor() As DbSet(Of Vendor)
     End Class
 
 End Namespace

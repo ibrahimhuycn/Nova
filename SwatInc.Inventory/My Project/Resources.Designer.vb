@@ -91,7 +91,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to All Labs.
+        '''  Looks up a localized string similar to Haematology.
         '''</summary>
         Friend ReadOnly Property DefaultLabName() As String
             Get

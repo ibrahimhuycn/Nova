@@ -7,6 +7,10 @@
 
     Public Event ActiveLaboratoryChanged(ByVal sender As Object, e As ActiveLaboratoryEventArgs)
 
+    Public Sub RaiseEventActiveLaboratoryChanged()
+        RaiseEvent ActiveLaboratoryChanged(Me, ActiveLaboratory)
+    End Sub
+
     Private Sub SelectActiveLaboratory(ByVal sender As Object, ByVal e As ActiveLaboratoryEventArgs) Handles Me.ActiveLaboratoryChanged
         BarButtonItemSelectLaboratory.Glyph = e.LaboratoryLogo
         BarButtonItemSelectLaboratory.Caption = e.LaboratoryName
@@ -15,8 +19,6 @@
 
     Private Sub SetupRibbon(ByVal e As ActiveLaboratoryEventArgs)
         Dim Laboratories() As String = {"All Labs", "Haematology", "Biochemistry", "Oncology"}
-
-        RaiseEvent ActiveLaboratoryChanged(Me, e)
 
         For Each LabName In Laboratories
             e.LaboratoryName = LabName
@@ -29,6 +31,9 @@
 
             AddHandler Labs.ItemClick, AddressOf LaboratorySeclection
         Next
+
+        e.LaboratoryName = My.Resources.DefaultLabName
+        RaiseEvent ActiveLaboratoryChanged(Me, e)
 
     End Sub
 
@@ -49,13 +54,19 @@
         Authenticate.Show()
     End Sub
 
+    Private Sub BarButtonInventory_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BarButtonInventory.ItemClick
+        Dim InventoryList As New Inventory With {.MdiParent = Me,
+            .StartPosition = FormStartPosition.CenterParent,
+            .ShowInTaskbar = False}
+        InventoryList.Show()
+    End Sub
+
     Private Sub LaboratorySeclection(ByVal sender As Object, ByVal e As DevExpress.XtraBars.ItemClickEventArgs)
         ActiveLaboratory.LaboratoryName = e.Item.Name
         RaiseEvent ActiveLaboratoryChanged(Me, ActiveLaboratory)
     End Sub
 
     Private Sub NovaUI_Load(sender As Object, e As EventArgs) Handles Me.Load
-        ActiveLaboratory.LaboratoryName = My.Resources.DefaultLabName
         SetupRibbon(ActiveLaboratory)
 
         'Prompt for Login

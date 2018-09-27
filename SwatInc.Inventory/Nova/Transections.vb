@@ -4,7 +4,6 @@
         Public Property Id As Integer
         Public Property IsAccepted As Boolean
         Public Property Items As Items
-        Public Property ItemType As ItemTypes
         Public Property Lab As Laboratory
         Public Property Lot As Lots
         Public Property Notes As String

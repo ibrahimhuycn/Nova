@@ -23,6 +23,8 @@ Partial Class NovaUI
         Dim NovaSplashManager As DevExpress.XtraSplashScreen.SplashScreenManager = New DevExpress.XtraSplashScreen.SplashScreenManager(Me, GetType(Global.SwatInc.Inventory.NovaSplash), True, True)
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(NovaUI))
         Me.NovaRibbon = New DevExpress.XtraBars.Ribbon.RibbonControl()
+        Me.NovaMenu = New DevExpress.XtraBars.Ribbon.ApplicationMenu(Me.components)
+        Me.BarButtonItemLogOut = New DevExpress.XtraBars.BarButtonItem()
         Me.BarButtonRequests = New DevExpress.XtraBars.BarButtonItem()
         Me.RequestsMenu = New DevExpress.XtraBars.PopupMenu(Me.components)
         Me.BarButtonMakePurchaseOrder = New DevExpress.XtraBars.BarButtonItem()
@@ -37,7 +39,6 @@ Partial Class NovaUI
         Me.BarStaticItemLoggedInUser = New DevExpress.XtraBars.BarStaticItem()
         Me.BarStaticItemSelectedLaboratoryName = New DevExpress.XtraBars.BarStaticItem()
         Me.BarStaticItemCompanyName = New DevExpress.XtraBars.BarStaticItem()
-        Me.BarButtonItem1 = New DevExpress.XtraBars.BarButtonItem()
         Me.RibbonPage1 = New DevExpress.XtraBars.Ribbon.RibbonPage()
         Me.RequestsAndInventory = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.UsersAndAuthentication = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
@@ -47,6 +48,7 @@ Partial Class NovaUI
         Me.RibbonStatusBar = New DevExpress.XtraBars.Ribbon.RibbonStatusBar()
         Me.RibbonPageGroup2 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         CType(Me.NovaRibbon, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.NovaMenu, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RequestsMenu, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LaboratoriesMenu, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -57,8 +59,9 @@ Partial Class NovaUI
         '
         'NovaRibbon
         '
+        Me.NovaRibbon.ApplicationButtonDropDownControl = Me.NovaMenu
         Me.NovaRibbon.ExpandCollapseItem.Id = 0
-        Me.NovaRibbon.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.NovaRibbon.ExpandCollapseItem, Me.BarButtonRequests, Me.BarButtonInventory, Me.BarButtonAddUser, Me.BarButtonChangePassword, Me.BarButtonResetPassword, Me.BarButtonDashboard, Me.BarButtonReorder, Me.BarButtonMakePurchaseOrder, Me.BarButtonItemSelectLaboratory, Me.BarStaticItemLoggedInUser, Me.BarStaticItemSelectedLaboratoryName, Me.BarStaticItemCompanyName, Me.BarButtonItem1})
+        Me.NovaRibbon.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.NovaRibbon.ExpandCollapseItem, Me.BarButtonRequests, Me.BarButtonInventory, Me.BarButtonAddUser, Me.BarButtonChangePassword, Me.BarButtonResetPassword, Me.BarButtonDashboard, Me.BarButtonReorder, Me.BarButtonMakePurchaseOrder, Me.BarButtonItemSelectLaboratory, Me.BarStaticItemLoggedInUser, Me.BarStaticItemSelectedLaboratoryName, Me.BarStaticItemCompanyName, Me.BarButtonItemLogOut})
         Me.NovaRibbon.Location = New System.Drawing.Point(0, 0)
         Me.NovaRibbon.MaxItemId = 3
         Me.NovaRibbon.Name = "NovaRibbon"
@@ -66,6 +69,20 @@ Partial Class NovaUI
         Me.NovaRibbon.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2007
         Me.NovaRibbon.Size = New System.Drawing.Size(1208, 143)
         Me.NovaRibbon.StatusBar = Me.RibbonStatusBar
+        '
+        'NovaMenu
+        '
+        Me.NovaMenu.ItemLinks.Add(Me.BarButtonItemLogOut)
+        Me.NovaMenu.Name = "NovaMenu"
+        Me.NovaMenu.Ribbon = Me.NovaRibbon
+        '
+        'BarButtonItemLogOut
+        '
+        Me.BarButtonItemLogOut.Caption = "Log Out"
+        Me.BarButtonItemLogOut.Id = 2
+        Me.BarButtonItemLogOut.ImageOptions.Image = CType(resources.GetObject("BarButtonItemLogOut.ImageOptions.Image"), System.Drawing.Image)
+        Me.BarButtonItemLogOut.Name = "BarButtonItemLogOut"
+        Me.BarButtonItemLogOut.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
         '
         'BarButtonRequests
         '
@@ -175,14 +192,6 @@ Partial Class NovaUI
         Me.BarStaticItemCompanyName.Id = 5
         Me.BarStaticItemCompanyName.Name = "BarStaticItemCompanyName"
         '
-        'BarButtonItem1
-        '
-        Me.BarButtonItem1.Caption = "Log Out"
-        Me.BarButtonItem1.Id = 2
-        Me.BarButtonItem1.ImageOptions.Image = CType(resources.GetObject("BarButtonItem1.ImageOptions.Image"), System.Drawing.Image)
-        Me.BarButtonItem1.Name = "BarButtonItem1"
-        Me.BarButtonItem1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
-        '
         'RibbonPage1
         '
         Me.RibbonPage1.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.RequestsAndInventory, Me.UsersAndAuthentication, Me.Laboratory})
@@ -203,7 +212,7 @@ Partial Class NovaUI
         Me.UsersAndAuthentication.ItemLinks.Add(Me.BarButtonAddUser)
         Me.UsersAndAuthentication.ItemLinks.Add(Me.BarButtonChangePassword)
         Me.UsersAndAuthentication.ItemLinks.Add(Me.BarButtonResetPassword)
-        Me.UsersAndAuthentication.ItemLinks.Add(Me.BarButtonItem1)
+        Me.UsersAndAuthentication.ItemLinks.Add(Me.BarButtonItemLogOut)
         Me.UsersAndAuthentication.Name = "UsersAndAuthentication"
         Me.UsersAndAuthentication.Text = "Users And Authentication"
         '
@@ -253,6 +262,7 @@ Partial Class NovaUI
         Me.Text = "NovaUI"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         CType(Me.NovaRibbon, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.NovaMenu, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RequestsMenu, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LaboratoriesMenu, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
@@ -283,5 +293,6 @@ Partial Class NovaUI
     Friend WithEvents BarStaticItemLoggedInUser As DevExpress.XtraBars.BarStaticItem
     Friend WithEvents BarStaticItemSelectedLaboratoryName As DevExpress.XtraBars.BarStaticItem
     Friend WithEvents BarStaticItemCompanyName As DevExpress.XtraBars.BarStaticItem
-    Friend WithEvents BarButtonItem1 As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents BarButtonItemLogOut As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents NovaMenu As DevExpress.XtraBars.Ribbon.ApplicationMenu
 End Class

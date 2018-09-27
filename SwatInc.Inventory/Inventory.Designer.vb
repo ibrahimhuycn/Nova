@@ -21,11 +21,8 @@ Partial Class Inventory
     Private Sub InitializeComponent()
         Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
         Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
-        Me.GridSplitContainer1 = New DevExpress.XtraGrid.GridSplitContainer()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridSplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GridSplitContainer1.SuspendLayout()
         Me.SuspendLayout()
         '
         'GridControl1
@@ -43,15 +40,6 @@ Partial Class Inventory
         '
         Me.GridView1.GridControl = Me.GridControl1
         Me.GridView1.Name = "GridView1"
-        Me.GridView1.OptionsView.ShowFooter = True
-        '
-        'GridSplitContainer1
-        '
-        Me.GridSplitContainer1.Grid = Me.GridControl1
-        Me.GridSplitContainer1.Location = New System.Drawing.Point(222, 12)
-        Me.GridSplitContainer1.Name = "GridSplitContainer1"
-        Me.GridSplitContainer1.Size = New System.Drawing.Size(388, 161)
-        Me.GridSplitContainer1.TabIndex = 0
         '
         'Inventory
         '
@@ -63,13 +51,10 @@ Partial Class Inventory
         Me.Text = "Inventory"
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridSplitContainer1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GridSplitContainer1.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
 
     Friend WithEvents GridControl1 As DevExpress.XtraGrid.GridControl
     Friend WithEvents GridView1 As DevExpress.XtraGrid.Views.Grid.GridView
-    Friend WithEvents GridSplitContainer1 As DevExpress.XtraGrid.GridSplitContainer
 End Class
