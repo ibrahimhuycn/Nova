@@ -45,7 +45,7 @@
     Public Sub LoadLoginScreen()
 
         'Opens Login Screen
-        Dim Authenticate As New FormAuthenticate() With {.MdiParent = Me}
+        Dim Authenticate As New Authenticate() With {.MdiParent = Me}
         Authenticate.Show()
     End Sub
 

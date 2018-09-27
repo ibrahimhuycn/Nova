@@ -1,6 +1,6 @@
 ﻿Imports SwatIncNotifications
 
-Public Class FormAuthenticate
+Public Class Authenticate
     'PENDING TASKS.
     'Use SwatIncCrypto to check whether user provided password and Hash retrieved from server match.
 
@@ -39,12 +39,12 @@ Public Class FormAuthenticate
         If isUserAuthenticated = True Then
             'Enabling Parent ribbon
             NovaUI.EnableRibbon(True)
-            Dim notify As New frmNotification
+            Dim notify As New Notification
             notify.ShowNotification(NotificationMessage:="User authenticated successfully!",
                 NotificationTitle:="Authentication",
                 NotficationPNG_IconName:="GreenTick",
                 Heading:="Welcome USERNAME")
-            'frmNotification.Show()
+            'Notification.Show()
             Close()
             Dispose()
         End If

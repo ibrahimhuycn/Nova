@@ -5,7 +5,9 @@ VisualStudioVersion = 15.0.27428.2002
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "SwatInc.Inventory", "SwatInc.Inventory\SwatInc.Inventory.vbproj", "{B725C8C0-F133-4F09-AAD3-9C09652EE05C}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "SwatIncNotifications", "..\SwatIncNotifications\SwatIncNotifications\SwatIncNotifications.vbproj", "{3B957294-83EF-4970-AFB1-83A25AE83AE4}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "SwatInc.Notifications", "..\SwatIncNotifications\SwatIncNotifications\SwatInc.Notifications.vbproj", "{3B957294-83EF-4970-AFB1-83A25AE83AE4}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "SwatInc.Security", "SwatInc.Security\SwatInc.Security.vbproj", "{79CD5FAB-AD13-4E9F-8019-C1C256D79F33}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{3B957294-83EF-4970-AFB1-83A25AE83AE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B957294-83EF-4970-AFB1-83A25AE83AE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3B957294-83EF-4970-AFB1-83A25AE83AE4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79CD5FAB-AD13-4E9F-8019-C1C256D79F33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79CD5FAB-AD13-4E9F-8019-C1C256D79F33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79CD5FAB-AD13-4E9F-8019-C1C256D79F33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79CD5FAB-AD13-4E9F-8019-C1C256D79F33}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

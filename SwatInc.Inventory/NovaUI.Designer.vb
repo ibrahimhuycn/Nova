@@ -248,8 +248,10 @@ Partial Class NovaUI
         Me.IsMdiContainer = True
         Me.Name = "NovaUI"
         Me.Ribbon = Me.NovaRibbon
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.StatusBar = Me.RibbonStatusBar
         Me.Text = "NovaUI"
+        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         CType(Me.NovaRibbon, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RequestsMenu, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LaboratoriesMenu, System.ComponentModel.ISupportInitialize).EndInit()
