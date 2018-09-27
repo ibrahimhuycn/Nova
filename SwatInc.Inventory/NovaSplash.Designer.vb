@@ -110,7 +110,7 @@ Partial Class NovaSplash
         Me.Controls.Add(Me.labelControl1)
         Me.Controls.Add(Me.marqueeProgressBarControl1)
         Me.Name = "NovaSplash"
-        Me.Text = "Form1"
+        Me.Text = "NovaSplash"
         CType(Me.pictureEdit2.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.marqueeProgressBarControl1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.pictureEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
