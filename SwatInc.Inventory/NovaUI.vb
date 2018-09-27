@@ -14,7 +14,7 @@
     End Sub
 
     Private Sub SetupRibbon(ByVal e As ActiveLaboratoryEventArgs)
-        Dim Laboratories() As String = {"Haematology", "Biochemistry", "Oncology"}
+        Dim Laboratories() As String = {"All Labs", "Haematology", "Biochemistry", "Oncology"}
 
         RaiseEvent ActiveLaboratoryChanged(Me, e)
 

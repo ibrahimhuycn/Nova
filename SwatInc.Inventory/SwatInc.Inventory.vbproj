@@ -379,5 +379,11 @@
       <Name>SwatInc.Security</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\All Labs.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\All Labs1.PNG" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

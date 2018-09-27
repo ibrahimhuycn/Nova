@@ -63,6 +63,16 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
+        Friend ReadOnly Property All_Labs() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("All_Labs", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
         Friend ReadOnly Property Authenticate() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("Authenticate", resourceCulture)
@@ -81,7 +91,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Chem.
+        '''  Looks up a localized string similar to All Labs.
         '''</summary>
         Friend ReadOnly Property DefaultLabName() As String
             Get

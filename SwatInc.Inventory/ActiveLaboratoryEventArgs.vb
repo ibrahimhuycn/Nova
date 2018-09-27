@@ -9,7 +9,8 @@
         End Get
         Set
             _laboratoryName = Value
-            LaboratoryLogo = My.Resources.ResourceManager.GetObject(LaboratoryName)
+            Dim LabNameSpacesReplaced As String = Replace(LaboratoryName, " ", "_")
+            LaboratoryLogo = My.Resources.ResourceManager.GetObject(LabNameSpacesReplaced)
         End Set
     End Property
 
