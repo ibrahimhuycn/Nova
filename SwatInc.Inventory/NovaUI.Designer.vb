@@ -35,7 +35,6 @@ Partial Class NovaUI
         Me.BarButtonDashboard = New DevExpress.XtraBars.BarButtonItem()
         Me.BarButtonReorder = New DevExpress.XtraBars.BarButtonItem()
         Me.BarButtonItemSelectLaboratory = New DevExpress.XtraBars.BarButtonItem()
-        Me.LaboratoriesMenu = New DevExpress.XtraBars.PopupMenu(Me.components)
         Me.BarStaticItemLoggedInUser = New DevExpress.XtraBars.BarStaticItem()
         Me.BarStaticItemSelectedLaboratoryName = New DevExpress.XtraBars.BarStaticItem()
         Me.BarStaticItemCompanyName = New DevExpress.XtraBars.BarStaticItem()
@@ -46,6 +45,7 @@ Partial Class NovaUI
         Me.Help = New DevExpress.XtraBars.Ribbon.RibbonPage()
         Me.RibbonPageGroup3 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.RibbonStatusBar = New DevExpress.XtraBars.Ribbon.RibbonStatusBar()
+        Me.LaboratoriesMenu = New DevExpress.XtraBars.PopupMenu(Me.components)
         Me.RibbonPageGroup2 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         CType(Me.NovaRibbon, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NovaMenu, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -63,7 +63,7 @@ Partial Class NovaUI
         Me.NovaRibbon.ExpandCollapseItem.Id = 0
         Me.NovaRibbon.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.NovaRibbon.ExpandCollapseItem, Me.BarButtonRequests, Me.BarButtonInventory, Me.BarButtonAddUser, Me.BarButtonChangePassword, Me.BarButtonResetPassword, Me.BarButtonDashboard, Me.BarButtonReorder, Me.BarButtonMakePurchaseOrder, Me.BarButtonItemSelectLaboratory, Me.BarStaticItemLoggedInUser, Me.BarStaticItemSelectedLaboratoryName, Me.BarStaticItemCompanyName, Me.BarButtonItemLogOut})
         Me.NovaRibbon.Location = New System.Drawing.Point(0, 0)
-        Me.NovaRibbon.MaxItemId = 3
+        Me.NovaRibbon.MaxItemId = 1
         Me.NovaRibbon.Name = "NovaRibbon"
         Me.NovaRibbon.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.RibbonPage1, Me.Help})
         Me.NovaRibbon.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2007
@@ -103,16 +103,13 @@ Partial Class NovaUI
         '
         'BarButtonMakePurchaseOrder
         '
-        Me.BarButtonMakePurchaseOrder.Caption = "Make Purchase Order"
-        Me.BarButtonMakePurchaseOrder.Id = 1
-        Me.BarButtonMakePurchaseOrder.ImageOptions.Image = CType(resources.GetObject("BarButtonMakePurchaseOrder.ImageOptions.Image"), System.Drawing.Image)
+        Me.BarButtonMakePurchaseOrder.Id = 8
         Me.BarButtonMakePurchaseOrder.Name = "BarButtonMakePurchaseOrder"
-        Me.BarButtonMakePurchaseOrder.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
         '
         'BarButtonInventory
         '
         Me.BarButtonInventory.Caption = "Inventory"
-        Me.BarButtonInventory.Id = 2
+        Me.BarButtonInventory.Id = 3
         Me.BarButtonInventory.ImageOptions.Image = CType(resources.GetObject("BarButtonInventory.ImageOptions.Image"), System.Drawing.Image)
         Me.BarButtonInventory.Name = "BarButtonInventory"
         Me.BarButtonInventory.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
@@ -120,7 +117,7 @@ Partial Class NovaUI
         'BarButtonAddUser
         '
         Me.BarButtonAddUser.Caption = "Add User"
-        Me.BarButtonAddUser.Id = 8
+        Me.BarButtonAddUser.Id = 4
         Me.BarButtonAddUser.ImageOptions.Image = CType(resources.GetObject("BarButtonAddUser.ImageOptions.Image"), System.Drawing.Image)
         Me.BarButtonAddUser.Name = "BarButtonAddUser"
         Me.BarButtonAddUser.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
@@ -128,7 +125,7 @@ Partial Class NovaUI
         'BarButtonChangePassword
         '
         Me.BarButtonChangePassword.Caption = "Change Password"
-        Me.BarButtonChangePassword.Id = 9
+        Me.BarButtonChangePassword.Id = 5
         Me.BarButtonChangePassword.ImageOptions.Image = CType(resources.GetObject("BarButtonChangePassword.ImageOptions.Image"), System.Drawing.Image)
         Me.BarButtonChangePassword.Name = "BarButtonChangePassword"
         Me.BarButtonChangePassword.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
@@ -136,7 +133,7 @@ Partial Class NovaUI
         'BarButtonResetPassword
         '
         Me.BarButtonResetPassword.Caption = "Reset Password"
-        Me.BarButtonResetPassword.Id = 10
+        Me.BarButtonResetPassword.Id = 6
         Me.BarButtonResetPassword.ImageOptions.Image = CType(resources.GetObject("BarButtonResetPassword.ImageOptions.Image"), System.Drawing.Image)
         Me.BarButtonResetPassword.Name = "BarButtonResetPassword"
         Me.BarButtonResetPassword.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
@@ -151,8 +148,8 @@ Partial Class NovaUI
         '
         'BarButtonReorder
         '
-        Me.BarButtonReorder.Caption = "Reorder"
-        Me.BarButtonReorder.Id = 12
+        Me.BarButtonReorder.Caption = "ButtonReorder"
+        Me.BarButtonReorder.Id = 7
         Me.BarButtonReorder.ImageOptions.Image = CType(resources.GetObject("BarButtonReorder.ImageOptions.Image"), System.Drawing.Image)
         Me.BarButtonReorder.Name = "BarButtonReorder"
         Me.BarButtonReorder.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
@@ -163,15 +160,10 @@ Partial Class NovaUI
         Me.BarButtonItemSelectLaboratory.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.DropDown
         Me.BarButtonItemSelectLaboratory.Caption = "Select Laboratory"
         Me.BarButtonItemSelectLaboratory.DropDownControl = Me.LaboratoriesMenu
-        Me.BarButtonItemSelectLaboratory.Id = 2
-        Me.BarButtonItemSelectLaboratory.ImageOptions.Image = CType(resources.GetObject("BarButtonItemSelectLaboratory.ImageOptions.Image"), System.Drawing.Image)
+        Me.BarButtonItemSelectLaboratory.Id = 9
+        Me.BarButtonItemSelectLaboratory.ImageOptions.Image = Global.SwatInc.Inventory.My.Resources.Resources.All_Labs
         Me.BarButtonItemSelectLaboratory.Name = "BarButtonItemSelectLaboratory"
         Me.BarButtonItemSelectLaboratory.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
-        '
-        'LaboratoriesMenu
-        '
-        Me.LaboratoriesMenu.Name = "LaboratoriesMenu"
-        Me.LaboratoriesMenu.Ribbon = Me.NovaRibbon
         '
         'BarStaticItemLoggedInUser
         '
@@ -242,6 +234,11 @@ Partial Class NovaUI
         Me.RibbonStatusBar.Name = "RibbonStatusBar"
         Me.RibbonStatusBar.Ribbon = Me.NovaRibbon
         Me.RibbonStatusBar.Size = New System.Drawing.Size(1208, 31)
+        '
+        'LaboratoriesMenu
+        '
+        Me.LaboratoriesMenu.Name = "LaboratoriesMenu"
+        Me.LaboratoriesMenu.Ribbon = Me.NovaRibbon
         '
         'RibbonPageGroup2
         '

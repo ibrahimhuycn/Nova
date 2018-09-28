@@ -19,6 +19,7 @@ Partial Class Inventory
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Inventory))
         Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
         Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -32,8 +33,8 @@ Partial Class Inventory
         Me.GridControl1.Location = New System.Drawing.Point(0, 0)
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(810, 328)
-        Me.GridControl1.TabIndex = 0
+        Me.GridControl1.Size = New System.Drawing.Size(1064, 459)
+        Me.GridControl1.TabIndex = 2
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '
         'GridView1
@@ -43,12 +44,17 @@ Partial Class Inventory
         '
         'Inventory
         '
+        Me.Appearance.BackColor = System.Drawing.Color.White
+        Me.Appearance.Options.UseBackColor = True
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(810, 328)
+        Me.ClientSize = New System.Drawing.Size(1064, 459)
         Me.Controls.Add(Me.GridControl1)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Inventory"
+        Me.Opacity = 0R
         Me.Text = "Inventory"
+        Me.TransparencyKey = System.Drawing.SystemColors.Control
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)

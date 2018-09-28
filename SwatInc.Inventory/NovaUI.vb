@@ -61,6 +61,14 @@
         InventoryList.Show()
     End Sub
 
+    Private Sub BarButtonItemSelectLaboratory_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BarButtonItemSelectLaboratory.ItemClick
+
+    End Sub
+
+    Private Sub BarButtonReorder_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs)
+
+    End Sub
+
     Private Sub LaboratorySeclection(ByVal sender As Object, ByVal e As DevExpress.XtraBars.ItemClickEventArgs)
         ActiveLaboratory.LaboratoryName = e.Item.Name
         RaiseEvent ActiveLaboratoryChanged(Me, ActiveLaboratory)

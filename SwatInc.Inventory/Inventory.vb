@@ -18,7 +18,8 @@ Public Class Inventory
                              From l In dbContext.Lots Where l.Item.Id = i.Id
                              From LabItems In dbContext.Laboratory_Items
                              From labs In dbContext.Laboratory Where (LabItems.Item.Id = i.Id And LabItems.Laboratory.Id = labs.Id)
-                             Select New With {Key .ItemName = i.Name,
+                             Select New With {Key .ItemId = i.Id,
+                                        Key .ItemName = i.Name,
                                         Key .Vendor = i.Vendor.Name,
                                         l.Quantity,
                                         i.CatalogNumber,
@@ -29,9 +30,8 @@ Public Class Inventory
                                         Key .Lab = labs.Name}
 
         ItemsDataQuery.Load()
-
-        '  GridControl1.DataSource = dbContext.Items.Local.ToBindingList()
         GridControl1.DataSource = ItemsDataQuery.ToList
+
         'Group Colums
         If GridView1.GroupedColumns.Count = 0 Then
             GridView1.Columns("Lab").GroupIndex = 1
@@ -40,6 +40,8 @@ Public Class Inventory
         GridView1.Columns("Expiry").SortOrder = DevExpress.Data.ColumnSortOrder.Ascending
 
         AddHandler NovaUI.ActiveLaboratoryChanged, AddressOf LabChanged
+        AddHandler GridView1.RowClick, AddressOf RowClicked
+
         NovaUI.RaiseEventActiveLaboratoryChanged()
     End Sub
 
@@ -49,6 +51,11 @@ Public Class Inventory
         Else
             GridView1.ActiveFilterCriteria = Nothing
         End If
+    End Sub
+
+    Private Sub RowClicked(ByVal sender As Object, e As RowClickEventArgs)
+        If Not e.RowHandle < 0 Then MsgBox(GridView1.GetFocusedRowCellValue("ItemName").ToString)
+
     End Sub
 
 End Class
