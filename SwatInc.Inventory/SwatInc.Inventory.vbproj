@@ -216,6 +216,10 @@
       <DependentUpon>201809271803392_AddTableVendorAndRelationShips.vb</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201809271803392_AddTableVendorAndRelationShips.vb" />
+    <Compile Include="Migrations\201809291138456_AddUnitsTableAndItsRelationships.Designer.vb">
+      <DependentUpon>201809291138456_AddUnitsTableAndItsRelationships.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809291138456_AddUnitsTableAndItsRelationships.vb" />
     <Compile Include="Migrations\Configuration.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -263,8 +267,10 @@
     <Compile Include="Nova\StockLevelSettings.vb" />
     <Compile Include="Nova\TransactionType.vb" />
     <Compile Include="Nova\Transections.vb" />
+    <Compile Include="Nova\Units.vb" />
     <Compile Include="Nova\UserAccessLevel.vb" />
     <Compile Include="Nova\Users.vb" />
+    <Compile Include="Nova\Vendor.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Authenticate.resx">
@@ -344,6 +350,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201809271803392_AddTableVendorAndRelationShips.resx">
       <DependentUpon>201809271803392_AddTableVendorAndRelationShips.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809291138456_AddUnitsTableAndItsRelationships.resx">
+      <DependentUpon>201809291138456_AddUnitsTableAndItsRelationships.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\licenses.licx" />
     <EmbeddedResource Include="My Project\Resources.resx">

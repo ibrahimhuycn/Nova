@@ -21,6 +21,7 @@ Partial Class NewRequest
     Private Sub InitializeComponent()
         Me.ComboBoxEdit1 = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.ComboBoxEdit2 = New DevExpress.XtraEditors.ComboBoxEdit()
+        Me.LabelControlItemsId = New DevExpress.XtraEditors.LabelControl()
         CType(Me.ComboBoxEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ComboBoxEdit2.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -41,11 +42,20 @@ Partial Class NewRequest
         Me.ComboBoxEdit2.Size = New System.Drawing.Size(100, 20)
         Me.ComboBoxEdit2.TabIndex = 1
         '
+        'LabelControlItemsId
+        '
+        Me.LabelControlItemsId.Location = New System.Drawing.Point(152, 95)
+        Me.LabelControlItemsId.Name = "LabelControlItemsId"
+        Me.LabelControlItemsId.Size = New System.Drawing.Size(41, 13)
+        Me.LabelControlItemsId.TabIndex = 2
+        Me.LabelControlItemsId.Text = "Items.Id"
+        '
         'NewRequest
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(799, 387)
+        Me.Controls.Add(Me.LabelControlItemsId)
         Me.Controls.Add(Me.ComboBoxEdit2)
         Me.Controls.Add(Me.ComboBoxEdit1)
         Me.Name = "NewRequest"
@@ -53,9 +63,11 @@ Partial Class NewRequest
         CType(Me.ComboBoxEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ComboBoxEdit2.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
     Friend WithEvents ComboBoxEdit1 As DevExpress.XtraEditors.ComboBoxEdit
     Friend WithEvents ComboBoxEdit2 As DevExpress.XtraEditors.ComboBoxEdit
+    Friend WithEvents LabelControlItemsId As DevExpress.XtraEditors.LabelControl
 End Class

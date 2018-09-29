@@ -61,12 +61,11 @@
         InventoryList.Show()
     End Sub
 
-    Private Sub BarButtonItemSelectLaboratory_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BarButtonItemSelectLaboratory.ItemClick
-
-    End Sub
-
-    Private Sub BarButtonReorder_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs)
-
+    Private Sub BarButtonReorder_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BarButtonReorder.ItemClick
+        Dim RequestNewItems As New NewRequest With {.MdiParent = Me,
+                                   .StartPosition = FormStartPosition.CenterParent,
+                                   .ShowInTaskbar = False}
+        RequestNewItems.Show()
     End Sub
 
     Private Sub LaboratorySeclection(ByVal sender As Object, ByVal e As DevExpress.XtraBars.ItemClickEventArgs)
@@ -77,13 +76,10 @@
     Private Sub NovaUI_Load(sender As Object, e As EventArgs) Handles Me.Load
         SetupRibbon(ActiveLaboratory)
 
-        'Prompt for Login
-
         'Disable Ribbon. Will be enabled after Authentication.
         EnableRibbon(False)
 
         LoadLoginScreen()
-        ' Log.Info("Form LisMini loaded!")
 
     End Sub
 

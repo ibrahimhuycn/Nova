@@ -35,6 +35,7 @@ Partial Class NovaUI
         Me.BarButtonDashboard = New DevExpress.XtraBars.BarButtonItem()
         Me.BarButtonReorder = New DevExpress.XtraBars.BarButtonItem()
         Me.BarButtonItemSelectLaboratory = New DevExpress.XtraBars.BarButtonItem()
+        Me.LaboratoriesMenu = New DevExpress.XtraBars.PopupMenu(Me.components)
         Me.BarStaticItemLoggedInUser = New DevExpress.XtraBars.BarStaticItem()
         Me.BarStaticItemSelectedLaboratoryName = New DevExpress.XtraBars.BarStaticItem()
         Me.BarStaticItemCompanyName = New DevExpress.XtraBars.BarStaticItem()
@@ -45,7 +46,6 @@ Partial Class NovaUI
         Me.Help = New DevExpress.XtraBars.Ribbon.RibbonPage()
         Me.RibbonPageGroup3 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.RibbonStatusBar = New DevExpress.XtraBars.Ribbon.RibbonStatusBar()
-        Me.LaboratoriesMenu = New DevExpress.XtraBars.PopupMenu(Me.components)
         Me.RibbonPageGroup2 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         CType(Me.NovaRibbon, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NovaMenu, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -165,6 +165,11 @@ Partial Class NovaUI
         Me.BarButtonItemSelectLaboratory.Name = "BarButtonItemSelectLaboratory"
         Me.BarButtonItemSelectLaboratory.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
         '
+        'LaboratoriesMenu
+        '
+        Me.LaboratoriesMenu.Name = "LaboratoriesMenu"
+        Me.LaboratoriesMenu.Ribbon = Me.NovaRibbon
+        '
         'BarStaticItemLoggedInUser
         '
         Me.BarStaticItemLoggedInUser.Caption = "User: "
@@ -234,11 +239,6 @@ Partial Class NovaUI
         Me.RibbonStatusBar.Name = "RibbonStatusBar"
         Me.RibbonStatusBar.Ribbon = Me.NovaRibbon
         Me.RibbonStatusBar.Size = New System.Drawing.Size(1208, 31)
-        '
-        'LaboratoriesMenu
-        '
-        Me.LaboratoriesMenu.Name = "LaboratoriesMenu"
-        Me.LaboratoriesMenu.Ribbon = Me.NovaRibbon
         '
         'RibbonPageGroup2
         '

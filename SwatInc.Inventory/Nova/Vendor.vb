@@ -1,8 +1,8 @@
 ﻿Namespace Nova
 
-    Public Class PackSizes
+    Public Class Vendor
         Public Property Id As Integer
-        Public Property Size As String
+        Public Property Name As String
 
     End Class
 

@@ -32,7 +32,7 @@ Public Class Inventory
         ItemsDataQuery.Load()
         GridControl1.DataSource = ItemsDataQuery.ToList
 
-        'Group Colums
+        'Group Columns
         If GridView1.GroupedColumns.Count = 0 Then
             GridView1.Columns("Lab").GroupIndex = 1
             GridView1.Columns("ItemName").GroupIndex = 2
