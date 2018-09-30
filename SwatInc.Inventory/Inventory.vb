@@ -25,6 +25,7 @@ Public Class Inventory
 
         AddHandler NovaUI.ActiveLaboratoryChanged, AddressOf LabChanged
         AddHandler GridView1.RowClick, AddressOf RowClicked
+        AddHandler InventoryItemEditing, AddressOf UpdateChanges
 
         NovaUI.RaiseEventActiveLaboratoryChanged()
     End Sub
@@ -49,7 +50,6 @@ Public Class Inventory
                                         Key .PackSize = i.PackSize.Size,
                                         Key .Expiry = l.ExpirationDate,
                                         Key .Lab = labs.Name}
-
         ItemsDataQuery.Load()
         GridControl1.DataSource = ItemsDataQuery.ToList
     End Sub
@@ -63,15 +63,50 @@ Public Class Inventory
     End Sub
 
     Private Sub RowClicked(ByVal sender As Object, e As RowClickEventArgs)
+        Dim VendorId As Integer
+        Dim ItemTypeId As Integer
+        Dim PackSizeId As Integer
+        Dim LabId As Integer
+        Dim UnitsId As Integer
+
+        Dim lotNumber As String
+        Dim UserSelectedItemId As Integer
 
         If Not e.RowHandle < 0 Then
             Dim UserResponse = MsgBox("Do you want to edit the item?", vbYesNo, "Edit Inventory")
+
             If UserResponse = MsgBoxResult.Yes Then
-                RaiseEvent InventoryItemEditing(Me, New InventoryItemEditEventArgs With {.ItemId = GridView1.GetFocusedRowCellValue("ItemId"),
-                                                .LotNumber = GridView1.GetFocusedRowCellValue("LotNumber")})
+                UserSelectedItemId = GridView1.GetFocusedRowCellValue("ItemId")
+                lotNumber = GridView1.GetFocusedRowCellValue("LotNumber")
+                'Get VendorId, ItemType, PackSize,LabName from ItemId
+
+                Dim IdsFromItemId = From I In dbContext.Items Join V In dbContext.Vendor On I.Vendor.Id Equals V.Id
+                                    Join u In dbContext.Units On I.Unit.Id Equals u.Id
+                                    Join It In dbContext.ItemType On I.Type.Id Equals It.Id
+                                    Join Ps In dbContext.PackSizes On I.PackSize.Id Equals Ps.Id
+                                    From L In dbContext.Laboratory From Li In dbContext.Laboratory_Items
+                                    Where Li.Item.Id = I.Id And Li.Laboratory.Id = L.Id
+                                    Where I.Id = UserSelectedItemId
+                                    Select New With {Key .VendorId = V.Id, Key .ItemTypeId = It.Id, Key .PackSizeId = Ps.Id,
+                                        Key .LabId = L.Id, Key .UnitsId = u.Id}
+
+                For Each id In IdsFromItemId
+                    VendorId = id.VendorId
+                    ItemTypeId = id.ItemTypeId
+                    PackSizeId = id.PackSizeId
+                    LabId = id.LabId
+                    UnitsId = id.UnitsId
+                Next
+
+                RaiseEvent InventoryItemEditing(Me, New InventoryItemEditEventArgs With {.UserSelectedItemId = UserSelectedItemId,
+                                                .LotNumber = lotNumber, .ItemTypeId = ItemTypeId, .LabId = LabId, .PackSizeId = PackSizeId,
+                                                .UnitsId = UnitsId, .VendorId = VendorId})
             End If
 
         End If
+    End Sub
+
+    Private Sub UpdateChanges(ByVal sender As Object, ByVal e As InventoryItemEditEventArgs)
 
     End Sub
 
