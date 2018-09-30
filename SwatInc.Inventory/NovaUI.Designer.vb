@@ -29,6 +29,9 @@ Partial Class NovaUI
         Me.RequestsMenu = New DevExpress.XtraBars.PopupMenu(Me.components)
         Me.BarButtonMakePurchaseOrder = New DevExpress.XtraBars.BarButtonItem()
         Me.BarButtonInventory = New DevExpress.XtraBars.BarButtonItem()
+        Me.InventoryMenu = New DevExpress.XtraBars.PopupMenu(Me.components)
+        Me.BarButtonItemNewItem = New DevExpress.XtraBars.BarButtonItem()
+        Me.BarButtonItemInventoryList = New DevExpress.XtraBars.BarButtonItem()
         Me.BarButtonAddUser = New DevExpress.XtraBars.BarButtonItem()
         Me.BarButtonChangePassword = New DevExpress.XtraBars.BarButtonItem()
         Me.BarButtonResetPassword = New DevExpress.XtraBars.BarButtonItem()
@@ -50,6 +53,7 @@ Partial Class NovaUI
         CType(Me.NovaRibbon, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NovaMenu, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RequestsMenu, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.InventoryMenu, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LaboratoriesMenu, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -61,9 +65,9 @@ Partial Class NovaUI
         '
         Me.NovaRibbon.ApplicationButtonDropDownControl = Me.NovaMenu
         Me.NovaRibbon.ExpandCollapseItem.Id = 0
-        Me.NovaRibbon.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.NovaRibbon.ExpandCollapseItem, Me.BarButtonRequests, Me.BarButtonInventory, Me.BarButtonAddUser, Me.BarButtonChangePassword, Me.BarButtonResetPassword, Me.BarButtonDashboard, Me.BarButtonReorder, Me.BarButtonMakePurchaseOrder, Me.BarButtonItemSelectLaboratory, Me.BarStaticItemLoggedInUser, Me.BarStaticItemSelectedLaboratoryName, Me.BarStaticItemCompanyName, Me.BarButtonItemLogOut})
+        Me.NovaRibbon.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.NovaRibbon.ExpandCollapseItem, Me.BarButtonRequests, Me.BarButtonInventory, Me.BarButtonAddUser, Me.BarButtonChangePassword, Me.BarButtonResetPassword, Me.BarButtonDashboard, Me.BarButtonReorder, Me.BarButtonMakePurchaseOrder, Me.BarButtonItemSelectLaboratory, Me.BarStaticItemLoggedInUser, Me.BarStaticItemSelectedLaboratoryName, Me.BarStaticItemCompanyName, Me.BarButtonItemLogOut, Me.BarButtonItemNewItem, Me.BarButtonItemInventoryList})
         Me.NovaRibbon.Location = New System.Drawing.Point(0, 0)
-        Me.NovaRibbon.MaxItemId = 1
+        Me.NovaRibbon.MaxItemId = 2
         Me.NovaRibbon.Name = "NovaRibbon"
         Me.NovaRibbon.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.RibbonPage1, Me.Help})
         Me.NovaRibbon.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2007
@@ -108,11 +112,33 @@ Partial Class NovaUI
         '
         'BarButtonInventory
         '
+        Me.BarButtonInventory.ActAsDropDown = True
+        Me.BarButtonInventory.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.DropDown
         Me.BarButtonInventory.Caption = "Inventory"
+        Me.BarButtonInventory.DropDownControl = Me.InventoryMenu
         Me.BarButtonInventory.Id = 3
         Me.BarButtonInventory.ImageOptions.Image = CType(resources.GetObject("BarButtonInventory.ImageOptions.Image"), System.Drawing.Image)
         Me.BarButtonInventory.Name = "BarButtonInventory"
         Me.BarButtonInventory.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
+        '
+        'InventoryMenu
+        '
+        Me.InventoryMenu.ItemLinks.Add(Me.BarButtonItemNewItem)
+        Me.InventoryMenu.ItemLinks.Add(Me.BarButtonItemInventoryList)
+        Me.InventoryMenu.Name = "InventoryMenu"
+        Me.InventoryMenu.Ribbon = Me.NovaRibbon
+        '
+        'BarButtonItemNewItem
+        '
+        Me.BarButtonItemNewItem.Caption = "New Item"
+        Me.BarButtonItemNewItem.Id = 2
+        Me.BarButtonItemNewItem.Name = "BarButtonItemNewItem"
+        '
+        'BarButtonItemInventoryList
+        '
+        Me.BarButtonItemInventoryList.Caption = "Inventory List"
+        Me.BarButtonItemInventoryList.Id = 1
+        Me.BarButtonItemInventoryList.Name = "BarButtonItemInventoryList"
         '
         'BarButtonAddUser
         '
@@ -235,7 +261,7 @@ Partial Class NovaUI
         Me.RibbonStatusBar.ItemLinks.Add(Me.BarStaticItemLoggedInUser)
         Me.RibbonStatusBar.ItemLinks.Add(Me.BarStaticItemSelectedLaboratoryName)
         Me.RibbonStatusBar.ItemLinks.Add(Me.BarStaticItemCompanyName)
-        Me.RibbonStatusBar.Location = New System.Drawing.Point(0, 463)
+        Me.RibbonStatusBar.Location = New System.Drawing.Point(0, 577)
         Me.RibbonStatusBar.Name = "RibbonStatusBar"
         Me.RibbonStatusBar.Ribbon = Me.NovaRibbon
         Me.RibbonStatusBar.Size = New System.Drawing.Size(1208, 31)
@@ -248,7 +274,9 @@ Partial Class NovaUI
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1208, 494)
+        Me.BackgroundImageLayoutStore = System.Windows.Forms.ImageLayout.Tile
+        Me.BackgroundImageStore = Global.SwatInc.Inventory.My.Resources.Resources.bkgd_pattern
+        Me.ClientSize = New System.Drawing.Size(1208, 608)
         Me.Controls.Add(Me.RibbonStatusBar)
         Me.Controls.Add(Me.NovaRibbon)
         Me.IsMdiContainer = True
@@ -261,6 +289,7 @@ Partial Class NovaUI
         CType(Me.NovaRibbon, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.NovaMenu, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RequestsMenu, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.InventoryMenu, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LaboratoriesMenu, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -292,4 +321,7 @@ Partial Class NovaUI
     Friend WithEvents BarStaticItemCompanyName As DevExpress.XtraBars.BarStaticItem
     Friend WithEvents BarButtonItemLogOut As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents NovaMenu As DevExpress.XtraBars.Ribbon.ApplicationMenu
+    Friend WithEvents InventoryMenu As DevExpress.XtraBars.PopupMenu
+    Friend WithEvents BarButtonItemNewItem As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents BarButtonItemInventoryList As DevExpress.XtraBars.BarButtonItem
 End Class

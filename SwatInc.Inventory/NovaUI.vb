@@ -1,4 +1,11 @@
 ﻿Public Class NovaUI
+    Public dbContext As Nova.NovaContext = New Nova.NovaContext()
+    Public ItemTypes As IQueryable(Of Nova.ItemTypes)
+    Public Locations As IQueryable(Of Nova.Locations)
+    Public PackSizes As IQueryable(Of Nova.PackSizes)
+    Public TransectionTypes As IQueryable(Of Nova.TransactionType)
+    Public Units As IQueryable(Of Nova.Units)
+    Public Vendors As IQueryable(Of Nova.Vendor)
 
 #Region "User Interface Setup"
 
@@ -18,10 +25,12 @@
     End Sub
 
     Private Sub SetupRibbon(ByVal e As ActiveLaboratoryEventArgs)
-        Dim Laboratories() As String = {"All Labs", "Haematology", "Biochemistry", "Oncology"}
+        Dim Laboratories = From l In dbContext.Laboratory
+                           Select l
 
         For Each LabName In Laboratories
-            e.LaboratoryName = LabName
+            e.LaboratoryName = LabName.Name
+            e.LaboratoryId = LabName.Id
             Labs = New DevExpress.XtraBars.BarButtonItem()
             LaboratoriesMenu.ItemLinks.Add(Labs)
             Labs.Name = e.LaboratoryName
@@ -54,11 +63,17 @@
         Authenticate.Show()
     End Sub
 
-    Private Sub BarButtonInventory_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BarButtonInventory.ItemClick
+    Private Sub BarButtonItemInventoryList_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BarButtonItemInventoryList.ItemClick
         Dim InventoryList As New Inventory With {.MdiParent = Me,
-            .StartPosition = FormStartPosition.CenterParent,
-            .ShowInTaskbar = False}
+    .StartPosition = FormStartPosition.CenterParent,
+    .ShowInTaskbar = False}
         InventoryList.Show()
+    End Sub
+
+    Private Sub BarButtonItemNewItem_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BarButtonItemNewItem.ItemClick
+        Dim AddNewItem As New AddItem(dbContext, Vendors, Units, ItemTypes) With {.MdiParent = Me, .ShowInTaskbar = False, .StartPosition = FormStartPosition.CenterScreen}
+        AddNewItem.Show()
+        RaiseEvent ActiveLaboratoryChanged(Me, ActiveLaboratory)
     End Sub
 
     Private Sub BarButtonReorder_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BarButtonReorder.ItemClick
@@ -73,14 +88,40 @@
         RaiseEvent ActiveLaboratoryChanged(Me, ActiveLaboratory)
     End Sub
 
+    Private Sub LoadStartUpData()
+        Dim TransectionTypeData = From ttd In dbContext.TransactionType
+                                  Select ttd
+        TransectionTypes = TransectionTypeData
+        Dim ItemTypeData = From itd In dbContext.ItemType
+                           Select itd
+        ItemTypes = ItemTypeData
+        Dim LocationData = From ld In dbContext.Locations
+                           Select ld
+        Locations = LocationData
+        Dim PackSizeData = From psd In dbContext.PackSizes
+                           Select psd
+        PackSizes = PackSizeData
+        Dim UnitsData = From ud In dbContext.Units
+                        Select ud
+        Units = UnitsData
+        '? PO Flags
+        Dim VendorsData = From vd In dbContext.Vendor
+                          Select vd
+        Vendors = VendorsData
+
+    End Sub
+
     Private Sub NovaUI_Load(sender As Object, e As EventArgs) Handles Me.Load
         SetupRibbon(ActiveLaboratory)
 
         'Disable Ribbon. Will be enabled after Authentication.
         EnableRibbon(False)
-
+        LoadStartUpData()
         LoadLoginScreen()
 
     End Sub
 
+    Private Sub DockPanel2_Click(sender As Object, e As EventArgs)
+
+    End Sub
 End Class
