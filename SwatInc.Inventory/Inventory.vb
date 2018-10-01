@@ -75,7 +75,6 @@ Public Class Inventory
         Dim LabId As Integer
         Dim UnitsId As Integer
 
-        Dim lotNumber As String
         Dim UserSelectedItemId As Integer
 
         Dim ItemName As String
@@ -84,8 +83,6 @@ Public Class Inventory
         Dim ItemType As String
         Dim PackSize As String
         Dim Lab As String
-        Dim Expiry As Date
-        Dim Amount As Integer 'Fetch Amount from server
         Dim unit As String 'Fetch unit from server
 
         If Not e.RowHandle < 0 Then
@@ -93,14 +90,12 @@ Public Class Inventory
 
             If UserResponse = MsgBoxResult.Yes Then
                 UserSelectedItemId = GridView1.GetFocusedRowCellValue("ItemId")
-                lotNumber = GridView1.GetFocusedRowCellValue("LotNumber")
                 ItemName = GridView1.GetFocusedRowCellValue("ItemName")
                 Vendor = GridView1.GetFocusedRowCellValue("Vendor")
                 CatalogNumber = GridView1.GetFocusedRowCellValue("CatalogNumber")
                 ItemType = GridView1.GetFocusedRowCellValue("ItemType")
                 PackSize = GridView1.GetFocusedRowCellValue("PackSize")
                 Lab = GridView1.GetFocusedRowCellValue("Lab")
-                Expiry = GridView1.GetFocusedRowCellValue("Expiry")
 
                 'Get VendorId, ItemType, PackSize,LabName, UnitsId and Unit from ItemId
                 Dim IdsFromItemId = From I In dbContext.Items Join V In dbContext.Vendor On I.Vendor.Id Equals V.Id
@@ -113,12 +108,17 @@ Public Class Inventory
                                     Select New With {Key .VendorId = V.Id, Key .ItemTypeId = It.Id, Key .PackSizeId = Ps.Id,
                                         Key .LabId = L.Id, Key .UnitsId = u.Id, Key .ItemUnit = u.Unit}
 
-                Dim DetailsFromLot = From Lot In dbContext.Lots
-                                     Where Lot.Id = lotNumber
-                                     Select Lot
+                Dim LotDetailsForItem = From Lot In dbContext.Lots
+                                        Where Lot.Item.Id = UserSelectedItemId
+                                        Select Lot
 
-                For Each detail In DetailsFromLot
-                    Amount = detail.Quantity
+                Dim LotInformation As New List(Of LotsCollectionForItem)
+
+                For Each detail In LotDetailsForItem
+                    Dim LotInfo As New LotsCollectionForItem With {.lotNumber = detail.Id,
+                                       .Quantity = detail.Quantity,
+                                       .Expiry = detail.ExpirationDate}
+                    LotInformation.Add(LotInfo)
                 Next
 
                 For Each id In IdsFromItemId
@@ -131,21 +131,19 @@ Public Class Inventory
                 Next
 
                 RaiseEvent InventoryItemEditing(Me, New InventoryItemEditEventArgs With {.UserSelectedItemId = UserSelectedItemId,
-                                                        .LotNumber = lotNumber,
                                                         .ItemTypeId = ItemTypeId,
                                                         .LabId = LabId,
                                                         .PackSizeId = PackSizeId,
                                                         .UnitsId = UnitsId,
                                                         .VendorId = VendorId,
-                                                        .Amount = Amount,
                                                         .CatalogNumber = CatalogNumber,
-                                                        .Expiry = Expiry,
                                                         .ItemName = ItemName,
                                                         .ItemType = ItemType,
                                                         .Lab = Lab,
                                                         .PackSize = PackSize,
                                                         .Unit = unit,
-                                                        .Vendor = Vendor})
+                                                        .Vendor = Vendor,
+                                                        .LotsCollection = LotInformation})
             End If
 
         End If
