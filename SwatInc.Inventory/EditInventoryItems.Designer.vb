@@ -41,25 +41,27 @@ Partial Class EditInventoryItems
         Me.LookUpEditItemType = New DevExpress.XtraEditors.LookUpEdit()
         Me.ItemTypesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.SimpleButton3 = New DevExpress.XtraEditors.SimpleButton()
-        Me.SimpleButton2 = New DevExpress.XtraEditors.SimpleButton()
+        Me.SimpleButtonSave1 = New DevExpress.XtraEditors.SimpleButton()
         Me.LabelControl7 = New DevExpress.XtraEditors.LabelControl()
         Me.LabelControl6 = New DevExpress.XtraEditors.LabelControl()
-        Me.TextEditPackSize = New DevExpress.XtraEditors.TextEdit()
         Me.LabelControl4 = New DevExpress.XtraEditors.LabelControl()
         Me.TextEditItemName = New DevExpress.XtraEditors.TextEdit()
         Me.LabelControl3 = New DevExpress.XtraEditors.LabelControl()
         Me.TabNavigationPageLotInformation = New DevExpress.XtraBars.Navigation.TabNavigationPage()
-        Me.SimpleButton1 = New DevExpress.XtraEditors.SimpleButton()
+        Me.SimpleButtonSave2 = New DevExpress.XtraEditors.SimpleButton()
         Me.SimpleButtonAddLot = New DevExpress.XtraEditors.SimpleButton()
         Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
         Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.LabelControl9 = New DevExpress.XtraEditors.LabelControl()
-        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
+        Me.DateTimePickerExpirationDate = New System.Windows.Forms.DateTimePicker()
         Me.LabelControl8 = New DevExpress.XtraEditors.LabelControl()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.TextBoxQuantity = New System.Windows.Forms.TextBox()
         Me.LabelControl5 = New DevExpress.XtraEditors.LabelControl()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.TextBoxLotNumber = New System.Windows.Forms.TextBox()
         Me.ItemsBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.LookUpEditPackSize = New DevExpress.XtraEditors.LookUpEdit()
+        Me.SimpleButton1 = New DevExpress.XtraEditors.SimpleButton()
+        Me.PackSizesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         CType(Me.TabPaneAddItem, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPaneAddItem.SuspendLayout()
         Me.TabNavigationPageAddInventoryItem.SuspendLayout()
@@ -74,12 +76,13 @@ Partial Class EditInventoryItems
         CType(Me.UnitsBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LookUpEditItemType.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ItemTypesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.TextEditPackSize.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TextEditItemName.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabNavigationPageLotInformation.SuspendLayout()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ItemsBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LookUpEditPackSize.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PackSizesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TabPaneAddItem
@@ -105,6 +108,8 @@ Partial Class EditInventoryItems
         '
         'GroupControl1
         '
+        Me.GroupControl1.Controls.Add(Me.SimpleButton1)
+        Me.GroupControl1.Controls.Add(Me.LookUpEditPackSize)
         Me.GroupControl1.Controls.Add(Me.SimpleButton4)
         Me.GroupControl1.Controls.Add(Me.LookUpEditLaboratory)
         Me.GroupControl1.Controls.Add(Me.LabelControl10)
@@ -118,10 +123,9 @@ Partial Class EditInventoryItems
         Me.GroupControl1.Controls.Add(Me.LookUpEditUnits)
         Me.GroupControl1.Controls.Add(Me.LookUpEditItemType)
         Me.GroupControl1.Controls.Add(Me.SimpleButton3)
-        Me.GroupControl1.Controls.Add(Me.SimpleButton2)
+        Me.GroupControl1.Controls.Add(Me.SimpleButtonSave1)
         Me.GroupControl1.Controls.Add(Me.LabelControl7)
         Me.GroupControl1.Controls.Add(Me.LabelControl6)
-        Me.GroupControl1.Controls.Add(Me.TextEditPackSize)
         Me.GroupControl1.Controls.Add(Me.LabelControl4)
         Me.GroupControl1.Controls.Add(Me.TextEditItemName)
         Me.GroupControl1.Controls.Add(Me.LabelControl3)
@@ -249,7 +253,7 @@ Partial Class EditInventoryItems
         '
         'LookUpEditUnits
         '
-        Me.LookUpEditUnits.Location = New System.Drawing.Point(132, 137)
+        Me.LookUpEditUnits.Location = New System.Drawing.Point(154, 137)
         Me.LookUpEditUnits.Name = "LookUpEditUnits"
         Me.LookUpEditUnits.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup
         Me.LookUpEditUnits.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
@@ -262,7 +266,7 @@ Partial Class EditInventoryItems
         Me.LookUpEditUnits.Properties.Tag = ""
         Me.LookUpEditUnits.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard
         Me.LookUpEditUnits.Properties.ValueMember = "Id"
-        Me.LookUpEditUnits.Size = New System.Drawing.Size(125, 20)
+        Me.LookUpEditUnits.Size = New System.Drawing.Size(103, 20)
         Me.LookUpEditUnits.TabIndex = 5
         '
         'UnitsBindingSource
@@ -299,14 +303,14 @@ Partial Class EditInventoryItems
         Me.SimpleButton3.TabIndex = 9
         Me.SimpleButton3.Text = "Request"
         '
-        'SimpleButton2
+        'SimpleButtonSave1
         '
-        Me.SimpleButton2.ImageOptions.Image = Global.SwatInc.Inventory.My.Resources.Resources.save16x16
-        Me.SimpleButton2.Location = New System.Drawing.Point(313, 167)
-        Me.SimpleButton2.Name = "SimpleButton2"
-        Me.SimpleButton2.Size = New System.Drawing.Size(75, 23)
-        Me.SimpleButton2.TabIndex = 7
-        Me.SimpleButton2.Text = "&Save"
+        Me.SimpleButtonSave1.ImageOptions.Image = Global.SwatInc.Inventory.My.Resources.Resources.save16x16
+        Me.SimpleButtonSave1.Location = New System.Drawing.Point(313, 167)
+        Me.SimpleButtonSave1.Name = "SimpleButtonSave1"
+        Me.SimpleButtonSave1.Size = New System.Drawing.Size(75, 23)
+        Me.SimpleButtonSave1.TabIndex = 7
+        Me.SimpleButtonSave1.Text = "&Save"
         '
         'LabelControl7
         '
@@ -318,18 +322,11 @@ Partial Class EditInventoryItems
         '
         'LabelControl6
         '
-        Me.LabelControl6.Location = New System.Drawing.Point(132, 118)
+        Me.LabelControl6.Location = New System.Drawing.Point(154, 117)
         Me.LabelControl6.Name = "LabelControl6"
         Me.LabelControl6.Size = New System.Drawing.Size(32, 13)
         Me.LabelControl6.TabIndex = 24
         Me.LabelControl6.Text = "Unit(s)"
-        '
-        'TextEditPackSize
-        '
-        Me.TextEditPackSize.Location = New System.Drawing.Point(5, 137)
-        Me.TextEditPackSize.Name = "TextEditPackSize"
-        Me.TextEditPackSize.Size = New System.Drawing.Size(121, 20)
-        Me.TextEditPackSize.TabIndex = 4
         '
         'LabelControl4
         '
@@ -357,29 +354,30 @@ Partial Class EditInventoryItems
         'TabNavigationPageLotInformation
         '
         Me.TabNavigationPageLotInformation.Caption = "Lot Information"
-        Me.TabNavigationPageLotInformation.Controls.Add(Me.SimpleButton1)
+        Me.TabNavigationPageLotInformation.Controls.Add(Me.SimpleButtonSave2)
         Me.TabNavigationPageLotInformation.Controls.Add(Me.SimpleButtonAddLot)
         Me.TabNavigationPageLotInformation.Controls.Add(Me.GridControl1)
         Me.TabNavigationPageLotInformation.Controls.Add(Me.LabelControl9)
-        Me.TabNavigationPageLotInformation.Controls.Add(Me.DateTimePicker1)
+        Me.TabNavigationPageLotInformation.Controls.Add(Me.DateTimePickerExpirationDate)
         Me.TabNavigationPageLotInformation.Controls.Add(Me.LabelControl8)
-        Me.TabNavigationPageLotInformation.Controls.Add(Me.TextBox2)
+        Me.TabNavigationPageLotInformation.Controls.Add(Me.TextBoxQuantity)
         Me.TabNavigationPageLotInformation.Controls.Add(Me.LabelControl5)
-        Me.TabNavigationPageLotInformation.Controls.Add(Me.TextBox1)
+        Me.TabNavigationPageLotInformation.Controls.Add(Me.TextBoxLotNumber)
         Me.TabNavigationPageLotInformation.Name = "TabNavigationPageLotInformation"
-        Me.TabNavigationPageLotInformation.Size = New System.Drawing.Size(477, 201)
+        Me.TabNavigationPageLotInformation.Size = New System.Drawing.Size(483, 203)
         '
-        'SimpleButton1
+        'SimpleButtonSave2
         '
-        Me.SimpleButton1.Location = New System.Drawing.Point(399, 22)
-        Me.SimpleButton1.Name = "SimpleButton1"
-        Me.SimpleButton1.Size = New System.Drawing.Size(75, 23)
-        Me.SimpleButton1.TabIndex = 8
-        Me.SimpleButton1.Text = "Save &Lot(s)"
+        Me.SimpleButtonSave2.ImageOptions.Image = Global.SwatInc.Inventory.My.Resources.Resources.save16x16
+        Me.SimpleButtonSave2.Location = New System.Drawing.Point(399, 21)
+        Me.SimpleButtonSave2.Name = "SimpleButtonSave2"
+        Me.SimpleButtonSave2.Size = New System.Drawing.Size(75, 23)
+        Me.SimpleButtonSave2.TabIndex = 8
+        Me.SimpleButtonSave2.Text = "&Save"
         '
         'SimpleButtonAddLot
         '
-        Me.SimpleButtonAddLot.Location = New System.Drawing.Point(318, 22)
+        Me.SimpleButtonAddLot.Location = New System.Drawing.Point(318, 21)
         Me.SimpleButtonAddLot.Name = "SimpleButtonAddLot"
         Me.SimpleButtonAddLot.Size = New System.Drawing.Size(75, 23)
         Me.SimpleButtonAddLot.TabIndex = 7
@@ -408,13 +406,13 @@ Partial Class EditInventoryItems
         Me.LabelControl9.TabIndex = 5
         Me.LabelControl9.Text = "Expiration Date"
         '
-        'DateTimePicker1
+        'DateTimePickerExpirationDate
         '
-        Me.DateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DateTimePicker1.Location = New System.Drawing.Point(210, 23)
-        Me.DateTimePicker1.Name = "DateTimePicker1"
-        Me.DateTimePicker1.Size = New System.Drawing.Size(102, 21)
-        Me.DateTimePicker1.TabIndex = 4
+        Me.DateTimePickerExpirationDate.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.DateTimePickerExpirationDate.Location = New System.Drawing.Point(210, 23)
+        Me.DateTimePickerExpirationDate.Name = "DateTimePickerExpirationDate"
+        Me.DateTimePickerExpirationDate.Size = New System.Drawing.Size(102, 21)
+        Me.DateTimePickerExpirationDate.TabIndex = 4
         '
         'LabelControl8
         '
@@ -424,12 +422,12 @@ Partial Class EditInventoryItems
         Me.LabelControl8.TabIndex = 3
         Me.LabelControl8.Text = "Quantity"
         '
-        'TextBox2
+        'TextBoxQuantity
         '
-        Me.TextBox2.Location = New System.Drawing.Point(139, 23)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(65, 21)
-        Me.TextBox2.TabIndex = 2
+        Me.TextBoxQuantity.Location = New System.Drawing.Point(139, 23)
+        Me.TextBoxQuantity.Name = "TextBoxQuantity"
+        Me.TextBoxQuantity.Size = New System.Drawing.Size(65, 21)
+        Me.TextBoxQuantity.TabIndex = 2
         '
         'LabelControl5
         '
@@ -439,16 +437,48 @@ Partial Class EditInventoryItems
         Me.LabelControl5.TabIndex = 1
         Me.LabelControl5.Text = "Lot Number"
         '
-        'TextBox1
+        'TextBoxLotNumber
         '
-        Me.TextBox1.Location = New System.Drawing.Point(3, 23)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(130, 21)
-        Me.TextBox1.TabIndex = 0
+        Me.TextBoxLotNumber.Location = New System.Drawing.Point(3, 23)
+        Me.TextBoxLotNumber.Name = "TextBoxLotNumber"
+        Me.TextBoxLotNumber.Size = New System.Drawing.Size(130, 21)
+        Me.TextBoxLotNumber.TabIndex = 0
         '
         'ItemsBindingSource
         '
         Me.ItemsBindingSource.DataSource = GetType(SwatInc.Inventory.Nova.Items)
+        '
+        'LookUpEditPackSize
+        '
+        Me.LookUpEditPackSize.Location = New System.Drawing.Point(5, 137)
+        Me.LookUpEditPackSize.Name = "LookUpEditPackSize"
+        Me.LookUpEditPackSize.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup
+        Me.LookUpEditPackSize.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.LookUpEditPackSize.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("Unit", "")})
+        Me.LookUpEditPackSize.Properties.DataSource = Me.PackSizesBindingSource
+        Me.LookUpEditPackSize.Properties.DisplayMember = "Size"
+        Me.LookUpEditPackSize.Properties.NullText = ""
+        Me.LookUpEditPackSize.Properties.ShowFooter = False
+        Me.LookUpEditPackSize.Properties.ShowHeader = False
+        Me.LookUpEditPackSize.Properties.Tag = ""
+        Me.LookUpEditPackSize.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard
+        Me.LookUpEditPackSize.Properties.ValueMember = "Id"
+        Me.LookUpEditPackSize.Size = New System.Drawing.Size(121, 20)
+        Me.LookUpEditPackSize.TabIndex = 40
+        '
+        'SimpleButton1
+        '
+        Me.SimpleButton1.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+        Me.SimpleButton1.ImageOptions.Image = Global.SwatInc.Inventory.My.Resources.Resources.AddIcon16x16
+        Me.SimpleButton1.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter
+        Me.SimpleButton1.Location = New System.Drawing.Point(127, 136)
+        Me.SimpleButton1.Name = "SimpleButton1"
+        Me.SimpleButton1.Size = New System.Drawing.Size(21, 21)
+        Me.SimpleButton1.TabIndex = 41
+        '
+        'PackSizesBindingSource
+        '
+        Me.PackSizesBindingSource.DataSource = GetType(SwatInc.Inventory.Nova.PackSizes)
         '
         'EditInventoryItems
         '
@@ -457,6 +487,7 @@ Partial Class EditInventoryItems
         Me.ClientSize = New System.Drawing.Size(501, 248)
         Me.Controls.Add(Me.TabPaneAddItem)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.KeyPreview = True
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "EditInventoryItems"
@@ -478,13 +509,14 @@ Partial Class EditInventoryItems
         CType(Me.UnitsBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LookUpEditItemType.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ItemTypesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.TextEditPackSize.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TextEditItemName.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabNavigationPageLotInformation.ResumeLayout(False)
         Me.TabNavigationPageLotInformation.PerformLayout()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ItemsBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LookUpEditPackSize.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PackSizesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -505,27 +537,29 @@ Partial Class EditInventoryItems
     Private WithEvents LookUpEditUnits As DevExpress.XtraEditors.LookUpEdit
     Friend WithEvents LookUpEditItemType As DevExpress.XtraEditors.LookUpEdit
     Friend WithEvents SimpleButton3 As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents SimpleButton2 As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents SimpleButtonSave1 As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents LabelControl7 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents LabelControl6 As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents TextEditPackSize As DevExpress.XtraEditors.TextEdit
     Friend WithEvents LabelControl4 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents TextEditItemName As DevExpress.XtraEditors.TextEdit
     Friend WithEvents LabelControl3 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents TabNavigationPageLotInformation As DevExpress.XtraBars.Navigation.TabNavigationPage
-    Friend WithEvents SimpleButton1 As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents SimpleButtonAddLot As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents GridControl1 As DevExpress.XtraGrid.GridControl
     Friend WithEvents GridView1 As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents LabelControl9 As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents DateTimePicker1 As DateTimePicker
+    Friend WithEvents DateTimePickerExpirationDate As DateTimePicker
     Friend WithEvents LabelControl8 As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents TextBoxQuantity As TextBox
     Friend WithEvents LabelControl5 As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents TextBoxLotNumber As TextBox
     Friend WithEvents VendorBindingSource As BindingSource
     Friend WithEvents UnitsBindingSource As BindingSource
     Friend WithEvents ItemTypesBindingSource As BindingSource
     Friend WithEvents ItemsBindingSource As BindingSource
     Friend WithEvents LaboratoryBindingSource As BindingSource
+    Friend WithEvents SimpleButtonSave2 As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents SimpleButton1 As DevExpress.XtraEditors.SimpleButton
+    Private WithEvents LookUpEditPackSize As DevExpress.XtraEditors.LookUpEdit
+    Friend WithEvents PackSizesBindingSource As BindingSource
 End Class
