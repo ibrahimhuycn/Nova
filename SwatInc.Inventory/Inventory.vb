@@ -25,7 +25,6 @@ Public Class Inventory
 
         AddHandler NovaUI.ActiveLaboratoryChanged, AddressOf LabChanged
         AddHandler GridView1.RowClick, AddressOf RowClicked
-        AddHandler InventoryItemEditing, AddressOf OnItemEditing
 
         NovaUI.RaiseEventActiveLaboratoryChanged()
     End Sub
@@ -62,12 +61,6 @@ Public Class Inventory
         End If
     End Sub
 
-    Private Sub OnItemEditing(ByVal sender As Object, ByVal e As InventoryItemEditEventArgs)
-        'Open up the Edit form
-        'Dim EditItems As New AddItem With {.MdiParent = NovaUI, .StartPosition = FormStartPosition.CenterScreen, .ShowInTaskbar = False}
-
-    End Sub
-
     Private Sub RowClicked(ByVal sender As Object, e As RowClickEventArgs)
         Dim VendorId As Integer
         Dim ItemTypeId As Integer
@@ -86,65 +79,65 @@ Public Class Inventory
         Dim unit As String 'Fetch unit from server
 
         If Not e.RowHandle < 0 Then
-            Dim UserResponse = MsgBox("Do you want to edit the item?", vbYesNo, "Edit Inventory")
 
-            If UserResponse = MsgBoxResult.Yes Then
-                UserSelectedItemId = GridView1.GetFocusedRowCellValue("ItemId")
-                ItemName = GridView1.GetFocusedRowCellValue("ItemName")
-                Vendor = GridView1.GetFocusedRowCellValue("Vendor")
-                CatalogNumber = GridView1.GetFocusedRowCellValue("CatalogNumber")
-                ItemType = GridView1.GetFocusedRowCellValue("ItemType")
-                PackSize = GridView1.GetFocusedRowCellValue("PackSize")
-                Lab = GridView1.GetFocusedRowCellValue("Lab")
+            UserSelectedItemId = GridView1.GetFocusedRowCellValue("ItemId")
+            ItemName = GridView1.GetFocusedRowCellValue("ItemName")
+            Vendor = GridView1.GetFocusedRowCellValue("Vendor")
+            CatalogNumber = GridView1.GetFocusedRowCellValue("CatalogNumber")
+            ItemType = GridView1.GetFocusedRowCellValue("ItemType")
+            PackSize = GridView1.GetFocusedRowCellValue("PackSize")
+            Lab = GridView1.GetFocusedRowCellValue("Lab")
 
-                'Get VendorId, ItemType, PackSize,LabName, UnitsId and Unit from ItemId
-                Dim IdsFromItemId = From I In dbContext.Items Join V In dbContext.Vendor On I.Vendor.Id Equals V.Id
-                                    Join u In dbContext.Units On I.Unit.Id Equals u.Id
-                                    Join It In dbContext.ItemType On I.Type.Id Equals It.Id
-                                    Join Ps In dbContext.PackSizes On I.PackSize.Id Equals Ps.Id
-                                    From L In dbContext.Laboratory From Li In dbContext.Laboratory_Items
-                                    Where Li.Item.Id = I.Id And Li.Laboratory.Id = L.Id
-                                    Where I.Id = UserSelectedItemId
-                                    Select New With {Key .VendorId = V.Id, Key .ItemTypeId = It.Id, Key .PackSizeId = Ps.Id,
-                                        Key .LabId = L.Id, Key .UnitsId = u.Id, Key .ItemUnit = u.Unit}
+            'Get VendorId, ItemType, PackSize,LabName, UnitsId and Unit from ItemId
+            Dim IdsFromItemId = From I In dbContext.Items Join V In dbContext.Vendor On I.Vendor.Id Equals V.Id
+                                Join u In dbContext.Units On I.Unit.Id Equals u.Id
+                                Join It In dbContext.ItemType On I.Type.Id Equals It.Id
+                                Join Ps In dbContext.PackSizes On I.PackSize.Id Equals Ps.Id
+                                From L In dbContext.Laboratory From Li In dbContext.Laboratory_Items
+                                Where Li.Item.Id = I.Id And Li.Laboratory.Id = L.Id
+                                Where I.Id = UserSelectedItemId
+                                Select New With {Key .VendorId = V.Id, Key .ItemTypeId = It.Id, Key .PackSizeId = Ps.Id,
+                                    Key .LabId = L.Id, Key .UnitsId = u.Id, Key .ItemUnit = u.Unit}
 
-                Dim LotDetailsForItem = From Lot In dbContext.Lots
-                                        Where Lot.Item.Id = UserSelectedItemId
-                                        Select Lot
+            Dim LotDetailsForItem = From Lot In dbContext.Lots
+                                    Where Lot.Item.Id = UserSelectedItemId
+                                    Select Lot
 
-                Dim LotInformation As New List(Of LotsCollectionForItem)
+            Dim LotInformation As New List(Of LotsCollectionForItem)
 
-                For Each detail In LotDetailsForItem
-                    Dim LotInfo As New LotsCollectionForItem With {.lotNumber = detail.Id,
-                                       .Quantity = detail.Quantity,
-                                       .Expiry = detail.ExpirationDate}
-                    LotInformation.Add(LotInfo)
-                Next
+            For Each detail In LotDetailsForItem
+                Dim LotInfo As New LotsCollectionForItem With {.LotNumber = detail.Id,
+                                   .Quantity = detail.Quantity,
+                                   .Expiry = detail.ExpirationDate}
+                LotInformation.Add(LotInfo)
+            Next
 
-                For Each id In IdsFromItemId
-                    VendorId = id.VendorId
-                    ItemTypeId = id.ItemTypeId
-                    PackSizeId = id.PackSizeId
-                    LabId = id.LabId
-                    UnitsId = id.UnitsId
-                    unit = id.ItemUnit
-                Next
+            For Each id In IdsFromItemId
+                VendorId = id.VendorId
+                ItemTypeId = id.ItemTypeId
+                PackSizeId = id.PackSizeId
+                LabId = id.LabId
+                UnitsId = id.UnitsId
+                unit = id.ItemUnit
+            Next
 
-                RaiseEvent InventoryItemEditing(Me, New InventoryItemEditEventArgs With {.UserSelectedItemId = UserSelectedItemId,
-                                                        .ItemTypeId = ItemTypeId,
-                                                        .LabId = LabId,
-                                                        .PackSizeId = PackSizeId,
-                                                        .UnitsId = UnitsId,
-                                                        .VendorId = VendorId,
-                                                        .CatalogNumber = CatalogNumber,
-                                                        .ItemName = ItemName,
-                                                        .ItemType = ItemType,
-                                                        .Lab = Lab,
-                                                        .PackSize = PackSize,
-                                                        .Unit = unit,
-                                                        .Vendor = Vendor,
-                                                        .LotsCollection = LotInformation})
-            End If
+            Dim EditItem As New EditInventoryItems(New InventoryItemEditEventArgs With {.UserSelectedItemId = UserSelectedItemId,
+                                                    .ItemTypeId = ItemTypeId,
+                                                    .LabId = LabId,
+                                                    .PackSizeId = PackSizeId,
+                                                    .UnitsId = UnitsId,
+                                                    .VendorId = VendorId,
+                                                    .CatalogNumber = CatalogNumber,
+                                                    .ItemName = ItemName,
+                                                    .ItemType = ItemType,
+                                                    .Lab = Lab,
+                                                    .PackSize = PackSize,
+                                                    .Unit = unit,
+                                                    .Vendor = Vendor,
+                                                    .LotsCollection = LotInformation}) With {.MdiParent = NovaUI,
+                                .StartPosition = FormStartPosition.CenterScreen,
+                                .ShowInTaskbar = False}
+            EditItem.Show()
 
         End If
     End Sub

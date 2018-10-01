@@ -17,7 +17,13 @@
 End Class
 
 Public Class LotsCollectionForItem
-    Public Property Expiry As Date
-    Public Property lotNumber As String
-    Public Property Quantity As Integer
+
+#Region "Keeping order"
+
+    Property LotNumber() As String
+
+#End Region
+
+    Property Expiry() As Date
+    Property Quantity() As Integer
 End Class

@@ -10,7 +10,10 @@ Public Class AddItem
     Dim Units As IQueryable(Of Nova.Units)
     Dim Vendors As IQueryable(Of Nova.Vendor)
 
-    Public Sub New(context As Nova.NovaContext, vendors As IQueryable(Of Nova.Vendor), units As IQueryable(Of Nova.Units), itemTypes As IQueryable(Of Nova.ItemTypes))
+    Public Sub New(context As Nova.NovaContext,
+        vendors As IQueryable(Of Nova.Vendor),
+        units As IQueryable(Of Nova.Units),
+        itemTypes As IQueryable(Of Nova.ItemTypes))
 
         InitializeComponent()
 

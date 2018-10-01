@@ -143,6 +143,12 @@
     <Compile Include="Authenticate.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="EditInventoryItems.Designer.vb">
+      <DependentUpon>EditInventoryItems.vb</DependentUpon>
+    </Compile>
+    <Compile Include="EditInventoryItems.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Inventory.Designer.vb">
       <DependentUpon>Inventory.vb</DependentUpon>
     </Compile>
@@ -309,6 +315,9 @@
     <EmbeddedResource Include="Authenticate.resx">
       <DependentUpon>Authenticate.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EditInventoryItems.resx">
+      <DependentUpon>EditInventoryItems.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Inventory.resx">
       <DependentUpon>Inventory.vb</DependentUpon>
     </EmbeddedResource>
@@ -411,6 +420,7 @@
     </None>
     <None Include="My Project\DataSources\SwatInc.Inventory.Nova.Items.datasource" />
     <None Include="My Project\DataSources\SwatInc.Inventory.Nova.ItemTypes.datasource" />
+    <None Include="My Project\DataSources\SwatInc.Inventory.Nova.Laboratory.datasource" />
     <None Include="My Project\DataSources\SwatInc.Inventory.Nova.Units.datasource" />
     <None Include="My Project\DataSources\SwatInc.Inventory.Nova.Vendor.datasource" />
     <None Include="My Project\Settings.settings">
