@@ -25,7 +25,7 @@ Public Class Inventory
 
         AddHandler NovaUI.ActiveLaboratoryChanged, AddressOf LabChanged
         AddHandler GridView1.RowClick, AddressOf RowClicked
-        AddHandler InventoryItemEditing, AddressOf UpdateChanges
+        AddHandler InventoryItemEditing, AddressOf OnItemEditing
 
         NovaUI.RaiseEventActiveLaboratoryChanged()
     End Sub
@@ -62,6 +62,12 @@ Public Class Inventory
         End If
     End Sub
 
+    Private Sub OnItemEditing(ByVal sender As Object, ByVal e As InventoryItemEditEventArgs)
+        'Open up the Edit form
+        'Dim EditItems As New AddItem With {.MdiParent = NovaUI, .StartPosition = FormStartPosition.CenterScreen, .ShowInTaskbar = False}
+
+    End Sub
+
     Private Sub RowClicked(ByVal sender As Object, e As RowClickEventArgs)
         Dim VendorId As Integer
         Dim ItemTypeId As Integer
@@ -96,7 +102,7 @@ Public Class Inventory
                 Lab = GridView1.GetFocusedRowCellValue("Lab")
                 Expiry = GridView1.GetFocusedRowCellValue("Expiry")
 
-                'Get VendorId, ItemType, PackSize,LabName from ItemId
+                'Get VendorId, ItemType, PackSize,LabName, UnitsId and Unit from ItemId
                 Dim IdsFromItemId = From I In dbContext.Items Join V In dbContext.Vendor On I.Vendor.Id Equals V.Id
                                     Join u In dbContext.Units On I.Unit.Id Equals u.Id
                                     Join It In dbContext.ItemType On I.Type.Id Equals It.Id
@@ -143,10 +149,6 @@ Public Class Inventory
             End If
 
         End If
-    End Sub
-
-    Private Sub UpdateChanges(ByVal sender As Object, ByVal e As InventoryItemEditEventArgs)
-
     End Sub
 
 End Class

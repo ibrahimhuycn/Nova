@@ -43,6 +43,6 @@ Public Class AddItem
     Private Sub SimpleButtonAssignLot_Click(sender As Object, e As EventArgs) Handles SimpleButtonAssignLot.Click
         '? NEW ITEM || EDITING EXISTING ITEM || REQUEST EXISTING ITEM
 
-
     End Sub
+
 End Class

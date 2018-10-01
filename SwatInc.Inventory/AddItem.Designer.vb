@@ -46,16 +46,16 @@ Partial Class AddItem
         Me.TextEditItemName = New DevExpress.XtraEditors.TextEdit()
         Me.LabelControl3 = New DevExpress.XtraEditors.LabelControl()
         Me.TabNavigationPageLotInformation = New DevExpress.XtraBars.Navigation.TabNavigationPage()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.LabelControl5 = New DevExpress.XtraEditors.LabelControl()
-        Me.LabelControl8 = New DevExpress.XtraEditors.LabelControl()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
-        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
-        Me.LabelControl9 = New DevExpress.XtraEditors.LabelControl()
+        Me.SimpleButton1 = New DevExpress.XtraEditors.SimpleButton()
+        Me.SimpleButtonAddLot = New DevExpress.XtraEditors.SimpleButton()
         Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
         Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
-        Me.SimpleButtonAddLot = New DevExpress.XtraEditors.SimpleButton()
-        Me.SimpleButton1 = New DevExpress.XtraEditors.SimpleButton()
+        Me.LabelControl9 = New DevExpress.XtraEditors.LabelControl()
+        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
+        Me.LabelControl8 = New DevExpress.XtraEditors.LabelControl()
+        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.LabelControl5 = New DevExpress.XtraEditors.LabelControl()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
         CType(Me.VendorBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.UnitsBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ItemTypesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -331,51 +331,21 @@ Partial Class AddItem
         Me.TabNavigationPageLotInformation.Name = "TabNavigationPageLotInformation"
         Me.TabNavigationPageLotInformation.Size = New System.Drawing.Size(477, 201)
         '
-        'TextBox1
+        'SimpleButton1
         '
-        Me.TextBox1.Location = New System.Drawing.Point(3, 23)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(130, 21)
-        Me.TextBox1.TabIndex = 0
+        Me.SimpleButton1.Location = New System.Drawing.Point(399, 22)
+        Me.SimpleButton1.Name = "SimpleButton1"
+        Me.SimpleButton1.Size = New System.Drawing.Size(75, 23)
+        Me.SimpleButton1.TabIndex = 8
+        Me.SimpleButton1.Text = "Save &Lot(s)"
         '
-        'LabelControl5
+        'SimpleButtonAddLot
         '
-        Me.LabelControl5.Location = New System.Drawing.Point(3, 4)
-        Me.LabelControl5.Name = "LabelControl5"
-        Me.LabelControl5.Size = New System.Drawing.Size(55, 13)
-        Me.LabelControl5.TabIndex = 1
-        Me.LabelControl5.Text = "Lot Number"
-        '
-        'LabelControl8
-        '
-        Me.LabelControl8.Location = New System.Drawing.Point(139, 4)
-        Me.LabelControl8.Name = "LabelControl8"
-        Me.LabelControl8.Size = New System.Drawing.Size(42, 13)
-        Me.LabelControl8.TabIndex = 3
-        Me.LabelControl8.Text = "Quantity"
-        '
-        'TextBox2
-        '
-        Me.TextBox2.Location = New System.Drawing.Point(139, 23)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(65, 21)
-        Me.TextBox2.TabIndex = 2
-        '
-        'DateTimePicker1
-        '
-        Me.DateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DateTimePicker1.Location = New System.Drawing.Point(210, 23)
-        Me.DateTimePicker1.Name = "DateTimePicker1"
-        Me.DateTimePicker1.Size = New System.Drawing.Size(102, 21)
-        Me.DateTimePicker1.TabIndex = 4
-        '
-        'LabelControl9
-        '
-        Me.LabelControl9.Location = New System.Drawing.Point(210, 4)
-        Me.LabelControl9.Name = "LabelControl9"
-        Me.LabelControl9.Size = New System.Drawing.Size(74, 13)
-        Me.LabelControl9.TabIndex = 5
-        Me.LabelControl9.Text = "Expiration Date"
+        Me.SimpleButtonAddLot.Location = New System.Drawing.Point(318, 22)
+        Me.SimpleButtonAddLot.Name = "SimpleButtonAddLot"
+        Me.SimpleButtonAddLot.Size = New System.Drawing.Size(75, 23)
+        Me.SimpleButtonAddLot.TabIndex = 7
+        Me.SimpleButtonAddLot.Text = "Add Lot"
         '
         'GridControl1
         '
@@ -392,21 +362,51 @@ Partial Class AddItem
         Me.GridView1.Name = "GridView1"
         Me.GridView1.OptionsView.ShowGroupPanel = False
         '
-        'SimpleButtonAddLot
+        'LabelControl9
         '
-        Me.SimpleButtonAddLot.Location = New System.Drawing.Point(318, 22)
-        Me.SimpleButtonAddLot.Name = "SimpleButtonAddLot"
-        Me.SimpleButtonAddLot.Size = New System.Drawing.Size(75, 23)
-        Me.SimpleButtonAddLot.TabIndex = 7
-        Me.SimpleButtonAddLot.Text = "Add Lot"
+        Me.LabelControl9.Location = New System.Drawing.Point(210, 4)
+        Me.LabelControl9.Name = "LabelControl9"
+        Me.LabelControl9.Size = New System.Drawing.Size(74, 13)
+        Me.LabelControl9.TabIndex = 5
+        Me.LabelControl9.Text = "Expiration Date"
         '
-        'SimpleButton1
+        'DateTimePicker1
         '
-        Me.SimpleButton1.Location = New System.Drawing.Point(399, 22)
-        Me.SimpleButton1.Name = "SimpleButton1"
-        Me.SimpleButton1.Size = New System.Drawing.Size(75, 23)
-        Me.SimpleButton1.TabIndex = 8
-        Me.SimpleButton1.Text = "Save &Lot(s)"
+        Me.DateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.DateTimePicker1.Location = New System.Drawing.Point(210, 23)
+        Me.DateTimePicker1.Name = "DateTimePicker1"
+        Me.DateTimePicker1.Size = New System.Drawing.Size(102, 21)
+        Me.DateTimePicker1.TabIndex = 4
+        '
+        'LabelControl8
+        '
+        Me.LabelControl8.Location = New System.Drawing.Point(139, 4)
+        Me.LabelControl8.Name = "LabelControl8"
+        Me.LabelControl8.Size = New System.Drawing.Size(42, 13)
+        Me.LabelControl8.TabIndex = 3
+        Me.LabelControl8.Text = "Quantity"
+        '
+        'TextBox2
+        '
+        Me.TextBox2.Location = New System.Drawing.Point(139, 23)
+        Me.TextBox2.Name = "TextBox2"
+        Me.TextBox2.Size = New System.Drawing.Size(65, 21)
+        Me.TextBox2.TabIndex = 2
+        '
+        'LabelControl5
+        '
+        Me.LabelControl5.Location = New System.Drawing.Point(3, 4)
+        Me.LabelControl5.Name = "LabelControl5"
+        Me.LabelControl5.Size = New System.Drawing.Size(55, 13)
+        Me.LabelControl5.TabIndex = 1
+        Me.LabelControl5.Text = "Lot Number"
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Location = New System.Drawing.Point(3, 23)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(130, 21)
+        Me.TextBox1.TabIndex = 0
         '
         'AddItem
         '

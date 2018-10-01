@@ -274,8 +274,6 @@ Partial Class NovaUI
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackgroundImageLayoutStore = System.Windows.Forms.ImageLayout.Tile
-        Me.BackgroundImageStore = Global.SwatInc.Inventory.My.Resources.Resources.bkgd_pattern
         Me.ClientSize = New System.Drawing.Size(1208, 608)
         Me.Controls.Add(Me.RibbonStatusBar)
         Me.Controls.Add(Me.NovaRibbon)
