@@ -1,4 +1,6 @@
-﻿Namespace Nova
+﻿Imports System.ComponentModel.DataAnnotations.Schema
+
+Namespace Nova
 
     Public Class Lots
         Public Property ExpirationDate As Date

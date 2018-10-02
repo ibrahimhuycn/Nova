@@ -61,13 +61,8 @@ Public Class EditInventoryItems
         Me.LookUpEditPackSize.EditValue = LookUpEditPackSize.Properties.GetKeyValueByDisplayText(EditArgs.PackSize)
     End Sub
 
-    Private Sub GetDeletedLotNumbers(ByVal serverLots() As String, ByVal SaveLots() As String)
-
-    End Sub
-
     Private Sub GridView1_GotFocus(sender As Object, e As EventArgs) Handles GridView1.GotFocus
         GridViewInFocus = True
-
     End Sub
 
     Private Sub GridView1_LostFocus(sender As Object, e As EventArgs) Handles GridView1.LostFocus
@@ -78,6 +73,7 @@ Public Class EditInventoryItems
         'Variables
         Dim DelimitedLotNumbersFromServer As String = Nothing
         Dim ServerLotNumbers() As String
+        Dim FinishedInserts As Boolean = False
 
         Dim SaveData As New InventoryItemEditEventArgs With {.ItemName = Me.TextEditItemName.Text,
                             .Lab = LookUpEditLaboratory.Text,
@@ -122,6 +118,18 @@ Public Class EditInventoryItems
         For Each LN In ServerLotNumbers
             Dim FoundMatchWithServerLot As Boolean = False
             For Each lot In SaveData.LotsCollection  'Iterate LOTS in SaveData
+
+                Dim NewLot As Boolean = True
+                'Look for new lots to insert.
+                For Each LNs In ServerLotNumbers
+                    If LNs = lot.LotNumber Then NewLot = False
+                Next
+                If NewLot = True Then
+                    Using sqlquery As New Nova.NovaContext
+                        Dim NoRowsInserted As Integer = sqlquery.Database.ExecuteSqlCommand(String.Format("INSERT INTO [dbo].[Lots] (Id,ExpirationDate,Quantity,Item_Id) VALUES ('{0}',{1},{2},{3})", lot.LotNumber, lot.Expiry.ToString("yyyy-MM-dd"), lot.Quantity, EditArgs.UserSelectedItemId))
+                        If Not NoRowsInserted = 1 Then MsgBox("Cannot insert lot: " & lot.LotNumber)
+                    End Using
+                End If
                 If lot.LotNumber = LN Then  'Do an UpDate
                     FoundMatchWithServerLot = True
                     Dim Query = _dbContext.Lots.Find(lot.LotNumber)
@@ -131,8 +139,8 @@ Public Class EditInventoryItems
                 End If
 
             Next
-
-            If FoundMatchWithServerLot = False Then 'Lot not in save data,  Do a DELETE on Server
+            FinishedInserts = True
+            If FoundMatchWithServerLot = False Then 'Lot not in save data,  Do a DELETE operation on Server
                 Dim RemoveLot = _dbContext.Lots.Find(LN)
                 _dbContext.Lots.Remove(RemoveLot)
             End If
@@ -148,13 +156,22 @@ Public Class EditInventoryItems
         Me.GridControl1.DataSource = e.LotsCollection
     End Sub
 
+    Private Sub SimpleButtonAddLot_Click(sender As Object, e As EventArgs) Handles SimpleButtonAddLot.Click
+        If Not TextBoxLotNumber.Text = "" And Not TextBoxQuantity.Text = "" Then
+            Dim NewLot As New LotsCollectionForItem With {.LotNumber = TextBoxLotNumber.Text,
+                .Quantity = TextBoxQuantity.Text, .Expiry = DateTimePickerExpirationDate.Text}
+
+            EditArgs.LotsCollection.Add(NewLot)
+        End If
+
+    End Sub
+
     Private Sub SimpleButtonSave1_Click(sender As Object, e As EventArgs) Handles SimpleButtonSave1.Click
         SaveData()
     End Sub
 
     Private Sub SimpleButtonSave2_Click(sender As Object, e As EventArgs) Handles SimpleButtonSave2.Click
         SaveData()
-
     End Sub
 
 End Class

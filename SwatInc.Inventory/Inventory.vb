@@ -1,4 +1,5 @@
-﻿Imports System.Data.Entity
+﻿Imports System.ComponentModel
+Imports System.Data.Entity
 Imports DevExpress.Data.Filtering
 Imports DevExpress.XtraGrid.Views.Grid
 
@@ -103,7 +104,7 @@ Public Class Inventory
                                     Where Lot.Item.Id = UserSelectedItemId
                                     Select Lot
 
-            Dim LotInformation As New List(Of LotsCollectionForItem)
+            Dim LotInformation As New BindingList(Of LotsCollectionForItem)
 
             For Each detail In LotDetailsForItem
                 Dim LotInfo As New LotsCollectionForItem With {.LotNumber = detail.Id,

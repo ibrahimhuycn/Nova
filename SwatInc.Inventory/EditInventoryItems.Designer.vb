@@ -24,6 +24,9 @@ Partial Class EditInventoryItems
         Me.TabPaneAddItem = New DevExpress.XtraBars.Navigation.TabPane()
         Me.TabNavigationPageAddInventoryItem = New DevExpress.XtraBars.Navigation.TabNavigationPage()
         Me.GroupControl1 = New DevExpress.XtraEditors.GroupControl()
+        Me.SimpleButton1 = New DevExpress.XtraEditors.SimpleButton()
+        Me.LookUpEditPackSize = New DevExpress.XtraEditors.LookUpEdit()
+        Me.PackSizesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.SimpleButton4 = New DevExpress.XtraEditors.SimpleButton()
         Me.LookUpEditLaboratory = New DevExpress.XtraEditors.LookUpEdit()
         Me.LaboratoryBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -59,14 +62,13 @@ Partial Class EditInventoryItems
         Me.LabelControl5 = New DevExpress.XtraEditors.LabelControl()
         Me.TextBoxLotNumber = New System.Windows.Forms.TextBox()
         Me.ItemsBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.LookUpEditPackSize = New DevExpress.XtraEditors.LookUpEdit()
-        Me.SimpleButton1 = New DevExpress.XtraEditors.SimpleButton()
-        Me.PackSizesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         CType(Me.TabPaneAddItem, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPaneAddItem.SuspendLayout()
         Me.TabNavigationPageAddInventoryItem.SuspendLayout()
         CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupControl1.SuspendLayout()
+        CType(Me.LookUpEditPackSize.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PackSizesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LookUpEditLaboratory.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LaboratoryBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LookUpEditVendor.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -81,8 +83,6 @@ Partial Class EditInventoryItems
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ItemsBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LookUpEditPackSize.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PackSizesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TabPaneAddItem
@@ -135,6 +135,38 @@ Partial Class EditInventoryItems
         Me.GroupControl1.Size = New System.Drawing.Size(483, 203)
         Me.GroupControl1.TabIndex = 14
         Me.GroupControl1.Text = "Item Information"
+        '
+        'SimpleButton1
+        '
+        Me.SimpleButton1.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+        Me.SimpleButton1.ImageOptions.Image = Global.SwatInc.Inventory.My.Resources.Resources.AddIcon16x16
+        Me.SimpleButton1.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter
+        Me.SimpleButton1.Location = New System.Drawing.Point(127, 136)
+        Me.SimpleButton1.Name = "SimpleButton1"
+        Me.SimpleButton1.Size = New System.Drawing.Size(21, 21)
+        Me.SimpleButton1.TabIndex = 41
+        '
+        'LookUpEditPackSize
+        '
+        Me.LookUpEditPackSize.Location = New System.Drawing.Point(5, 137)
+        Me.LookUpEditPackSize.Name = "LookUpEditPackSize"
+        Me.LookUpEditPackSize.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup
+        Me.LookUpEditPackSize.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.LookUpEditPackSize.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("Unit", "")})
+        Me.LookUpEditPackSize.Properties.DataSource = Me.PackSizesBindingSource
+        Me.LookUpEditPackSize.Properties.DisplayMember = "Size"
+        Me.LookUpEditPackSize.Properties.NullText = ""
+        Me.LookUpEditPackSize.Properties.ShowFooter = False
+        Me.LookUpEditPackSize.Properties.ShowHeader = False
+        Me.LookUpEditPackSize.Properties.Tag = ""
+        Me.LookUpEditPackSize.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard
+        Me.LookUpEditPackSize.Properties.ValueMember = "Id"
+        Me.LookUpEditPackSize.Size = New System.Drawing.Size(121, 20)
+        Me.LookUpEditPackSize.TabIndex = 40
+        '
+        'PackSizesBindingSource
+        '
+        Me.PackSizesBindingSource.DataSource = GetType(SwatInc.Inventory.Nova.PackSizes)
         '
         'SimpleButton4
         '
@@ -448,38 +480,6 @@ Partial Class EditInventoryItems
         '
         Me.ItemsBindingSource.DataSource = GetType(SwatInc.Inventory.Nova.Items)
         '
-        'LookUpEditPackSize
-        '
-        Me.LookUpEditPackSize.Location = New System.Drawing.Point(5, 137)
-        Me.LookUpEditPackSize.Name = "LookUpEditPackSize"
-        Me.LookUpEditPackSize.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup
-        Me.LookUpEditPackSize.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.LookUpEditPackSize.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("Unit", "")})
-        Me.LookUpEditPackSize.Properties.DataSource = Me.PackSizesBindingSource
-        Me.LookUpEditPackSize.Properties.DisplayMember = "Size"
-        Me.LookUpEditPackSize.Properties.NullText = ""
-        Me.LookUpEditPackSize.Properties.ShowFooter = False
-        Me.LookUpEditPackSize.Properties.ShowHeader = False
-        Me.LookUpEditPackSize.Properties.Tag = ""
-        Me.LookUpEditPackSize.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard
-        Me.LookUpEditPackSize.Properties.ValueMember = "Id"
-        Me.LookUpEditPackSize.Size = New System.Drawing.Size(121, 20)
-        Me.LookUpEditPackSize.TabIndex = 40
-        '
-        'SimpleButton1
-        '
-        Me.SimpleButton1.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
-        Me.SimpleButton1.ImageOptions.Image = Global.SwatInc.Inventory.My.Resources.Resources.AddIcon16x16
-        Me.SimpleButton1.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter
-        Me.SimpleButton1.Location = New System.Drawing.Point(127, 136)
-        Me.SimpleButton1.Name = "SimpleButton1"
-        Me.SimpleButton1.Size = New System.Drawing.Size(21, 21)
-        Me.SimpleButton1.TabIndex = 41
-        '
-        'PackSizesBindingSource
-        '
-        Me.PackSizesBindingSource.DataSource = GetType(SwatInc.Inventory.Nova.PackSizes)
-        '
         'EditInventoryItems
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -500,6 +500,8 @@ Partial Class EditInventoryItems
         CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupControl1.ResumeLayout(False)
         Me.GroupControl1.PerformLayout()
+        CType(Me.LookUpEditPackSize.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PackSizesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LookUpEditLaboratory.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LaboratoryBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LookUpEditVendor.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -515,8 +517,6 @@ Partial Class EditInventoryItems
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ItemsBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LookUpEditPackSize.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PackSizesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
