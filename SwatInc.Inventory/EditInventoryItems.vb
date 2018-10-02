@@ -95,8 +95,6 @@ Public Class EditInventoryItems
         ItemSaveHandler.CatalogNumber = SaveData.CatalogNumber
         ItemSaveHandler.Name = SaveData.ItemName
 
-#Region "Bug reported in #5 Hopefully Fixed."
-
         'Updating foreign keys In dbo.Items
         Using sqlUpdateQuery As New Nova.NovaContext
             'SQL UPDATE Syntax: UPDATE table-name SET column-name = value, column-name = value, ...
@@ -110,8 +108,6 @@ Public Class EditInventoryItems
                 SaveData.VendorId,
                 EditArgs.UserSelectedItemId))
         End Using
-
-#End Region
 
         'Save Lots
         '1.Get All LotNumbers in Server for ItemId
