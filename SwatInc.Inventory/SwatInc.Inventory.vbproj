@@ -257,6 +257,10 @@
       <DependentUpon>201809291138456_AddUnitsTableAndItsRelationships.vb</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201809291138456_AddUnitsTableAndItsRelationships.vb" />
+    <Compile Include="Migrations\201810020311243_DropTableItems_Locations.Designer.vb">
+      <DependentUpon>201810020311243_DropTableItems_Locations.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810020311243_DropTableItems_Locations.vb" />
     <Compile Include="Migrations\Configuration.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -293,7 +297,6 @@
     </Compile>
     <Compile Include="Nova\CurrentStockLevels.vb" />
     <Compile Include="Nova\Items.vb" />
-    <Compile Include="Nova\Items_Locations.vb" />
     <Compile Include="Nova\ItemTypes.vb" />
     <Compile Include="Nova\Laboratory.vb" />
     <Compile Include="Nova\Locations.vb" />
@@ -396,6 +399,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201809291138456_AddUnitsTableAndItsRelationships.resx">
       <DependentUpon>201809291138456_AddUnitsTableAndItsRelationships.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810020311243_DropTableItems_Locations.resx">
+      <DependentUpon>201810020311243_DropTableItems_Locations.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\licenses.licx" />
     <EmbeddedResource Include="My Project\Resources.resx">
