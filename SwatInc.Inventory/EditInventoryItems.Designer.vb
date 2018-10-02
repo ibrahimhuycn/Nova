@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class EditInventoryItems
     Inherits DevExpress.XtraEditors.XtraForm
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         If disposing AndAlso components IsNot Nothing Then
             _dbContext.Dispose()
@@ -18,7 +18,7 @@ Partial Class EditInventoryItems
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.TabPaneAddItem = New DevExpress.XtraBars.Navigation.TabPane()
@@ -93,9 +93,9 @@ Partial Class EditInventoryItems
         Me.TabPaneAddItem.Location = New System.Drawing.Point(0, 0)
         Me.TabPaneAddItem.Name = "TabPaneAddItem"
         Me.TabPaneAddItem.Pages.AddRange(New DevExpress.XtraBars.Navigation.NavigationPageBase() {Me.TabNavigationPageAddInventoryItem, Me.TabNavigationPageLotInformation})
-        Me.TabPaneAddItem.RegularSize = New System.Drawing.Size(501, 248)
+        Me.TabPaneAddItem.RegularSize = New System.Drawing.Size(500, 249)
         Me.TabPaneAddItem.SelectedPage = Me.TabNavigationPageAddInventoryItem
-        Me.TabPaneAddItem.Size = New System.Drawing.Size(501, 248)
+        Me.TabPaneAddItem.Size = New System.Drawing.Size(500, 249)
         Me.TabPaneAddItem.TabIndex = 15
         Me.TabPaneAddItem.Text = "Add Item"
         '
@@ -104,7 +104,7 @@ Partial Class EditInventoryItems
         Me.TabNavigationPageAddInventoryItem.Caption = "Add Inventory Item"
         Me.TabNavigationPageAddInventoryItem.Controls.Add(Me.GroupControl1)
         Me.TabNavigationPageAddInventoryItem.Name = "TabNavigationPageAddInventoryItem"
-        Me.TabNavigationPageAddInventoryItem.Size = New System.Drawing.Size(483, 203)
+        Me.TabNavigationPageAddInventoryItem.Size = New System.Drawing.Size(482, 204)
         '
         'GroupControl1
         '
@@ -132,7 +132,7 @@ Partial Class EditInventoryItems
         Me.GroupControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GroupControl1.Location = New System.Drawing.Point(0, 0)
         Me.GroupControl1.Name = "GroupControl1"
-        Me.GroupControl1.Size = New System.Drawing.Size(483, 203)
+        Me.GroupControl1.Size = New System.Drawing.Size(482, 204)
         Me.GroupControl1.TabIndex = 14
         Me.GroupControl1.Text = "Item Information"
         '
@@ -182,11 +182,10 @@ Partial Class EditInventoryItems
         '
         Me.LookUpEditLaboratory.Location = New System.Drawing.Point(339, 45)
         Me.LookUpEditLaboratory.Name = "LookUpEditLaboratory"
-        Me.LookUpEditLaboratory.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup
         Me.LookUpEditLaboratory.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.LookUpEditLaboratory.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("Unit", "")})
         Me.LookUpEditLaboratory.Properties.DataSource = Me.LaboratoryBindingSource
         Me.LookUpEditLaboratory.Properties.DisplayMember = "Name"
+        Me.LookUpEditLaboratory.Properties.KeyMember = "Id"
         Me.LookUpEditLaboratory.Properties.NullText = ""
         Me.LookUpEditLaboratory.Properties.ShowFooter = False
         Me.LookUpEditLaboratory.Properties.ShowHeader = False
@@ -264,7 +263,7 @@ Partial Class EditInventoryItems
         '
         Me.TextEditCatalogNumber.Location = New System.Drawing.Point(240, 92)
         Me.TextEditCatalogNumber.Name = "TextEditCatalogNumber"
-        Me.TextEditCatalogNumber.Size = New System.Drawing.Size(235, 20)
+        Me.TextEditCatalogNumber.Size = New System.Drawing.Size(213, 20)
         Me.TextEditCatalogNumber.TabIndex = 3
         '
         'LabelControl2
@@ -484,7 +483,7 @@ Partial Class EditInventoryItems
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(501, 248)
+        Me.ClientSize = New System.Drawing.Size(500, 249)
         Me.Controls.Add(Me.TabPaneAddItem)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.KeyPreview = True
