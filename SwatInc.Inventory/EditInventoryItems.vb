@@ -26,7 +26,7 @@ Public Class EditInventoryItems
         PackSizeData.Load
         UnitsData.Load
         VendorsData.Load
-        Labs.Load
+        Labs.Load()
 
         VendorBindingSource.DataSource = _dbContext.Vendor.Local
         ItemTypesBindingSource.DataSource = _dbContext.ItemType.Local
