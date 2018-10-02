@@ -95,12 +95,21 @@ Public Class EditInventoryItems
         ItemSaveHandler.CatalogNumber = SaveData.CatalogNumber
         ItemSaveHandler.Name = SaveData.ItemName
 
-#Region "Bug reported in #5 Issue Now morphed to replace foreign tables data field instead of trying to change PK"
+#Region "Bug reported in #5 Hopefully Fixed."
 
-        ItemSaveHandler.PackSize.Size = SaveData.PackSize
-        ItemSaveHandler.Type.Type = SaveData.ItemType
-        ItemSaveHandler.Unit.Unit = SaveData.Unit
-        ItemSaveHandler.Vendor.Name = SaveData.Vendor
+        'Updating foreign keys In dbo.Items
+        Using sqlUpdateQuery As New Nova.NovaContext
+            'SQL UPDATE Syntax: UPDATE table-name SET column-name = value, column-name = value, ...
+            sqlUpdateQuery.Database.ExecuteSqlCommand(
+                String.Format(
+                "UPDATE [dbo].[Items] SET [Items].[PackSize_Id]={0},[Items].[Type_Id]={1},[Items].[Unit_Id]={2},[Items].[Vendor_Id]={3}" &
+                " WHERE [Items].[Id]={4}",
+                SaveData.PackSizeId,
+                SaveData.ItemTypeId,
+                SaveData.UnitsId,
+                SaveData.VendorId,
+                EditArgs.UserSelectedItemId))
+        End Using
 
 #End Region
 
@@ -137,7 +146,14 @@ Public Class EditInventoryItems
                         For Each ItemLoc In Location
                             LocationId = ItemLoc.Id
                         Next
-                        Dim NoRowsInserted As Integer = sqlquery.Database.ExecuteSqlCommand(String.Format("INSERT INTO [dbo].[Lots] ([Id],[ExpirationDate],[Quantity],[Item_Id],[Location_Id]) VALUES ('{0}',{1},{2},{3},{4})", lot.LotNumber, lot.Expiry.ToString("yyyy-MM-dd"), lot.Quantity, EditArgs.UserSelectedItemId, LocationId))
+                        Dim NoRowsInserted As Integer = sqlquery.Database.ExecuteSqlCommand(
+                            String.Format("INSERT INTO [dbo].[Lots] ([Id],[ExpirationDate],[Quantity],[Item_Id],[Location_Id])" &
+                            " VALUES ('{0}',{1},{2},{3},{4})",
+                            lot.LotNumber,
+                            lot.Expiry.ToString("dd-MM-yyyy"),
+                            lot.Quantity,
+                            EditArgs.UserSelectedItemId,
+                            LocationId))
                         If Not NoRowsInserted = 1 Then MsgBox("Cannot insert lot: " & lot.LotNumber)
                     End Using
                 End If
