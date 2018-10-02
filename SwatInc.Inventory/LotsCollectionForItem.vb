@@ -1,5 +1,4 @@
-﻿
-Public Class LotsCollectionForItem
+﻿Public Class LotsCollectionForItem
 
 #Region "Keeping order"
 
@@ -8,5 +7,6 @@ Public Class LotsCollectionForItem
 #End Region
 
     Property Expiry() As Date
+    Property LotLocation As String
     Property Quantity() As Integer
 End Class

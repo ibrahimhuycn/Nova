@@ -1,7 +1,7 @@
-﻿Imports System.ComponentModel
-Imports System.Data.Entity
-Imports DevExpress.Data.Filtering
+﻿Imports DevExpress.Data.Filtering
 Imports DevExpress.XtraGrid.Views.Grid
+Imports System.ComponentModel
+Imports System.Data.Entity
 
 Public Class Inventory
     Dim dbContext As Nova.NovaContext = New Nova.NovaContext()
@@ -47,6 +47,7 @@ Public Class Inventory
                                         i.CatalogNumber,
                                         Key .ItemType = i.Type.Type,
                                         Key .LotNumber = l.Id,
+                                        Key .LotLocation = l.Location.Location,
                                         Key .PackSize = i.PackSize.Size,
                                         Key .Expiry = l.ExpirationDate,
                                         Key .Lab = labs.Name}
@@ -63,6 +64,13 @@ Public Class Inventory
     End Sub
 
     Private Sub RowClicked(ByVal sender As Object, e As RowClickEventArgs)
+        Select Case e.Button
+            Case MouseButtons.Right
+            Case MouseButtons.Left
+                If Not e.Clicks = 2 Then
+                    Exit Sub
+                End If
+        End Select
         Dim VendorId As Integer
         Dim ItemTypeId As Integer
         Dim PackSizeId As Integer
@@ -77,6 +85,7 @@ Public Class Inventory
         Dim ItemType As String
         Dim PackSize As String
         Dim Lab As String
+        Dim LotLocation As String
         Dim unit As String 'Fetch unit from server
 
         If Not e.RowHandle < 0 Then
@@ -88,6 +97,7 @@ Public Class Inventory
             ItemType = GridView1.GetFocusedRowCellValue("ItemType")
             PackSize = GridView1.GetFocusedRowCellValue("PackSize")
             Lab = GridView1.GetFocusedRowCellValue("Lab")
+            LotLocation = GridView1.GetFocusedRowCellValue("LotLocation")
 
             'Get VendorId, ItemType, PackSize,LabName, UnitsId and Unit from ItemId
             Dim IdsFromItemId = From I In dbContext.Items Join V In dbContext.Vendor On I.Vendor.Id Equals V.Id
@@ -101,15 +111,20 @@ Public Class Inventory
                                     Key .LabId = L.Id, Key .UnitsId = u.Id, Key .ItemUnit = u.Unit}
 
             Dim LotDetailsForItem = From Lot In dbContext.Lots
+                                    From Ll In dbContext.Locations Where Lot.Location.Id = Ll.Id
                                     Where Lot.Item.Id = UserSelectedItemId
-                                    Select Lot
+                                    Select New With {Lot.Id,
+                                               Lot.Quantity,
+                                               Lot.ExpirationDate,
+                                               Key .LotLocation = Lot.Location.Location}
 
             Dim LotInformation As New BindingList(Of LotsCollectionForItem)
 
             For Each detail In LotDetailsForItem
                 Dim LotInfo As New LotsCollectionForItem With {.LotNumber = detail.Id,
                                    .Quantity = detail.Quantity,
-                                   .Expiry = detail.ExpirationDate}
+                                   .Expiry = detail.ExpirationDate,
+                                   .LotLocation = detail.LotLocation}
                 LotInformation.Add(LotInfo)
             Next
 

@@ -89,14 +89,20 @@ Public Class EditInventoryItems
                             .UserSelectedItemId = EditArgs.UserSelectedItemId,
                             .Vendor = LookUpEditVendor.Text,
                             .VendorId = LookUpEditVendor.EditValue}
+
         'Save Item
         Dim ItemSaveHandler = _dbContext.Items.Find(SaveData.UserSelectedItemId)
         ItemSaveHandler.CatalogNumber = SaveData.CatalogNumber
         ItemSaveHandler.Name = SaveData.ItemName
-        ItemSaveHandler.PackSize.Id = SaveData.PackSizeId
-        ItemSaveHandler.Type.Id = SaveData.ItemTypeId
-        ItemSaveHandler.Unit.Id = SaveData.UnitsId
-        ItemSaveHandler.Vendor.Id = SaveData.VendorId
+
+#Region "Bug reported in #5 Issue Now morphed to replace foreign tables data field instead of trying to change PK"
+
+        ItemSaveHandler.PackSize.Size = SaveData.PackSize
+        ItemSaveHandler.Type.Type = SaveData.ItemType
+        ItemSaveHandler.Unit.Unit = SaveData.Unit
+        ItemSaveHandler.Vendor.Name = SaveData.Vendor
+
+#End Region
 
         'Save Lots
         '1.Get All LotNumbers in Server for ItemId
@@ -124,9 +130,14 @@ Public Class EditInventoryItems
                 For Each LNs In ServerLotNumbers
                     If LNs = lot.LotNumber Then NewLot = False
                 Next
-                If NewLot = True Then
+                If NewLot = True And FinishedInserts = False Then
                     Using sqlquery As New Nova.NovaContext
-                        Dim NoRowsInserted As Integer = sqlquery.Database.ExecuteSqlCommand(String.Format("INSERT INTO [dbo].[Lots] (Id,ExpirationDate,Quantity,Item_Id) VALUES ('{0}',{1},{2},{3})", lot.LotNumber, lot.Expiry.ToString("yyyy-MM-dd"), lot.Quantity, EditArgs.UserSelectedItemId))
+                        Dim Location = From l In sqlquery.Locations Where l.Location = lot.LotLocation Select l
+                        Dim LocationId As Integer
+                        For Each ItemLoc In Location
+                            LocationId = ItemLoc.Id
+                        Next
+                        Dim NoRowsInserted As Integer = sqlquery.Database.ExecuteSqlCommand(String.Format("INSERT INTO [dbo].[Lots] ([Id],[ExpirationDate],[Quantity],[Item_Id],[Location_Id]) VALUES ('{0}',{1},{2},{3},{4})", lot.LotNumber, lot.Expiry.ToString("yyyy-MM-dd"), lot.Quantity, EditArgs.UserSelectedItemId, LocationId))
                         If Not NoRowsInserted = 1 Then MsgBox("Cannot insert lot: " & lot.LotNumber)
                     End Using
                 End If
