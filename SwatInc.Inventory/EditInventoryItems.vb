@@ -107,6 +107,11 @@ Public Class EditInventoryItems
                 SaveData.UnitsId,
                 SaveData.VendorId,
                 EditArgs.UserSelectedItemId))
+
+            'Update assigned lab information for the item
+            sqlUpdateQuery.Database.ExecuteSqlCommand(
+                String.Format(
+                "UPDATE Laboratory_Items SET Laboratory_Id = {0} WHERE Item_Id = {1}", SaveData.LabId, EditArgs.UserSelectedItemId))
         End Using
 
         'Save Lots
