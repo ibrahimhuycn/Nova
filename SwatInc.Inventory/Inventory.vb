@@ -6,7 +6,6 @@ Imports System.Data.Entity
 
 Public Class Inventory
     Dim dbContext As Nova.NovaContext = New Nova.NovaContext()
-    Dim ItemsInventoryDataList
 
     Sub New()
 
@@ -29,6 +28,10 @@ Public Class Inventory
 
     Public Event OnInventoryItemEditing(ByVal sender As Object, e As EventArgs)
 
+    Private Sub Inventory_Load(sender As Object, e As EventArgs) Handles Me.Load
+        GridView1.ExpandAllGroups()
+    End Sub
+
     Private Sub ItemDataLoadRequired()
         Dim ItemsDataQuery = From i In dbContext.Items
                              From l In dbContext.Lots Where l.Item.Id = i.Id
@@ -47,14 +50,8 @@ Public Class Inventory
                                         Key .Expiry = l.ExpirationDate,
                                         Key .Lab = labs.Name}
         ItemsDataQuery.Load()
-
-#Region "Testing"
-
-        ItemsInventoryDataList = ItemsDataQuery.ToList
-        GridControl1.DataSource = ItemsInventoryDataList
-
-#End Region
-
+        GridControl1.DataSource = ItemsDataQuery.ToList
+        GridView1.ExpandAllGroups()
     End Sub
 
     Private Sub LabChanged(ByVal sender As Object, ByVal e As ActiveLaboratoryEventArgs)
@@ -68,7 +65,6 @@ Public Class Inventory
     Private Sub RefreshEffectedItem(sender As Object, e As InventoryItemUpdateEventArgs)
         'TODO: This needs to load only the effected Item. I am gonna load the whole table for the time being
         ItemDataLoadRequired()
-        GridView1.ExpandAllGroups()
 
     End Sub
 

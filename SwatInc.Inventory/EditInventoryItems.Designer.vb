@@ -101,7 +101,7 @@ Partial Class EditInventoryItems
         '
         'TabNavigationPageAddInventoryItem
         '
-        Me.TabNavigationPageAddInventoryItem.Caption = "Add Inventory Item"
+        Me.TabNavigationPageAddInventoryItem.Caption = "Edit Inventory Item"
         Me.TabNavigationPageAddInventoryItem.Controls.Add(Me.GroupControl1)
         Me.TabNavigationPageAddInventoryItem.Name = "TabNavigationPageAddInventoryItem"
         Me.TabNavigationPageAddInventoryItem.Size = New System.Drawing.Size(482, 204)
@@ -150,11 +150,10 @@ Partial Class EditInventoryItems
         '
         Me.LookUpEditPackSize.Location = New System.Drawing.Point(5, 137)
         Me.LookUpEditPackSize.Name = "LookUpEditPackSize"
-        Me.LookUpEditPackSize.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup
         Me.LookUpEditPackSize.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.LookUpEditPackSize.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("Unit", "")})
         Me.LookUpEditPackSize.Properties.DataSource = Me.PackSizesBindingSource
         Me.LookUpEditPackSize.Properties.DisplayMember = "Size"
+        Me.LookUpEditPackSize.Properties.KeyMember = "Id"
         Me.LookUpEditPackSize.Properties.NullText = ""
         Me.LookUpEditPackSize.Properties.ShowFooter = False
         Me.LookUpEditPackSize.Properties.ShowHeader = False
@@ -395,7 +394,7 @@ Partial Class EditInventoryItems
         Me.TabNavigationPageLotInformation.Controls.Add(Me.LabelControl5)
         Me.TabNavigationPageLotInformation.Controls.Add(Me.TextBoxLotNumber)
         Me.TabNavigationPageLotInformation.Name = "TabNavigationPageLotInformation"
-        Me.TabNavigationPageLotInformation.Size = New System.Drawing.Size(483, 203)
+        Me.TabNavigationPageLotInformation.Size = New System.Drawing.Size(482, 204)
         '
         'SimpleButtonSave2
         '

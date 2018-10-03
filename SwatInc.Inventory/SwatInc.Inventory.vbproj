@@ -265,6 +265,10 @@
       <DependentUpon>201810020315297_AddFKLocationsToItemsAndLots.vb</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201810020315297_AddFKLocationsToItemsAndLots.vb" />
+    <Compile Include="Migrations\201810031739501_AddColumnDesignationToUsersTable.Designer.vb">
+      <DependentUpon>201810031739501_AddColumnDesignationToUsersTable.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810031739501_AddColumnDesignationToUsersTable.vb" />
     <Compile Include="Migrations\Configuration.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -409,6 +413,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810020315297_AddFKLocationsToItemsAndLots.resx">
       <DependentUpon>201810020315297_AddFKLocationsToItemsAndLots.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810031739501_AddColumnDesignationToUsersTable.resx">
+      <DependentUpon>201810031739501_AddColumnDesignationToUsersTable.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\licenses.licx" />
     <EmbeddedResource Include="My Project\Resources.resx">
