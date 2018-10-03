@@ -269,6 +269,10 @@
       <DependentUpon>201810031739501_AddColumnDesignationToUsersTable.vb</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201810031739501_AddColumnDesignationToUsersTable.vb" />
+    <Compile Include="Migrations\201810031912197_AddForeignKeyLaboratoryToStockLevelSettings.Designer.vb">
+      <DependentUpon>201810031912197_AddForeignKeyLaboratoryToStockLevelSettings.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810031912197_AddForeignKeyLaboratoryToStockLevelSettings.vb" />
     <Compile Include="Migrations\Configuration.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -307,6 +311,7 @@
     <Compile Include="Nova\Items.vb" />
     <Compile Include="Nova\ItemTypes.vb" />
     <Compile Include="Nova\Laboratory.vb" />
+    <Compile Include="Nova\Laboratory_Items.vb" />
     <Compile Include="Nova\Locations.vb" />
     <Compile Include="Nova\Lots.vb" />
     <Compile Include="Nova\NovaContext.vb" />
@@ -416,6 +421,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810031739501_AddColumnDesignationToUsersTable.resx">
       <DependentUpon>201810031739501_AddColumnDesignationToUsersTable.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810031912197_AddForeignKeyLaboratoryToStockLevelSettings.resx">
+      <DependentUpon>201810031912197_AddForeignKeyLaboratoryToStockLevelSettings.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\licenses.licx" />
     <EmbeddedResource Include="My Project\Resources.resx">

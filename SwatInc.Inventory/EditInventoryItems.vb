@@ -1,4 +1,5 @@
 ﻿Imports System.Data.Entity
+Imports SwatInc.Inventory
 
 Public Class EditInventoryItems
     Public _dbContext As Nova.NovaContext
@@ -38,6 +39,8 @@ Public Class EditInventoryItems
             EditArgs = e
             SetupEditingItem(Me, e)
         End If
+        AddHandler OnInventoryListUpdated, AddressOf UpdateTransaction
+
     End Sub
 
     Public Shared Event OnInventoryListUpdated(ByVal sender As Object, ByVal e As InventoryItemUpdateEventArgs)
@@ -180,6 +183,10 @@ Public Class EditInventoryItems
         RaiseEvent OnInventoryListUpdated(Me, DataUpdate)
     End Sub
 
+    Private Sub SaveInventoryData() Handles SimpleButtonSave2.Click, SimpleButtonSave1.Click
+        SaveData()
+    End Sub
+
     Private Sub SetupEditingItem(ByVal sender As Object, e As InventoryItemUpdateEventArgs)
         Me.TextEditItemName.Text = e.ItemName
         Me.TextEditCatalogNumber.Text = e.CatalogNumber
@@ -196,12 +203,8 @@ Public Class EditInventoryItems
 
     End Sub
 
-    Private Sub SimpleButtonSave1_Click(sender As Object, e As EventArgs) Handles SimpleButtonSave1.Click
-        SaveData()
-    End Sub
-
-    Private Sub SimpleButtonSave2_Click(sender As Object, e As EventArgs) Handles SimpleButtonSave2.Click
-        SaveData()
+    Private Sub UpdateTransaction(sender As Object, e As InventoryItemUpdateEventArgs)
+        Throw New NotImplementedException()
     End Sub
 
 End Class

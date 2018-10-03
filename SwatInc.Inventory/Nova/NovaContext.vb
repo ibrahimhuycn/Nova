@@ -24,6 +24,7 @@ Namespace Nova
         Public Property Units() As DbSet(Of Units)
         Public Property Users() As DbSet(Of Users)
         Public Property Vendor() As DbSet(Of Vendor)
+
     End Class
 
 End Namespace
