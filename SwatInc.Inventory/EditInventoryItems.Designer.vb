@@ -53,15 +53,18 @@ Partial Class EditInventoryItems
         Me.TabNavigationPageLotInformation = New DevExpress.XtraBars.Navigation.TabNavigationPage()
         Me.SimpleButtonSave2 = New DevExpress.XtraEditors.SimpleButton()
         Me.SimpleButtonAddLot = New DevExpress.XtraEditors.SimpleButton()
-        Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
-        Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.GridControlLots = New DevExpress.XtraGrid.GridControl()
+        Me.GridViewLots = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.LabelControl9 = New DevExpress.XtraEditors.LabelControl()
         Me.DateTimePickerExpirationDate = New System.Windows.Forms.DateTimePicker()
         Me.LabelControl8 = New DevExpress.XtraEditors.LabelControl()
         Me.TextBoxQuantity = New System.Windows.Forms.TextBox()
         Me.LabelControl5 = New DevExpress.XtraEditors.LabelControl()
         Me.TextBoxLotNumber = New System.Windows.Forms.TextBox()
+        Me.TabNavigationPageItemTransactionHistrory = New DevExpress.XtraBars.Navigation.TabNavigationPage()
         Me.ItemsBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
+        Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
         CType(Me.TabPaneAddItem, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPaneAddItem.SuspendLayout()
         Me.TabNavigationPageAddInventoryItem.SuspendLayout()
@@ -80,19 +83,23 @@ Partial Class EditInventoryItems
         CType(Me.ItemTypesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TextEditItemName.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabNavigationPageLotInformation.SuspendLayout()
+        CType(Me.GridControlLots, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GridViewLots, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.TabNavigationPageItemTransactionHistrory.SuspendLayout()
+        CType(Me.ItemsBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ItemsBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TabPaneAddItem
         '
         Me.TabPaneAddItem.Controls.Add(Me.TabNavigationPageAddInventoryItem)
         Me.TabPaneAddItem.Controls.Add(Me.TabNavigationPageLotInformation)
+        Me.TabPaneAddItem.Controls.Add(Me.TabNavigationPageItemTransactionHistrory)
         Me.TabPaneAddItem.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TabPaneAddItem.Location = New System.Drawing.Point(0, 0)
         Me.TabPaneAddItem.Name = "TabPaneAddItem"
-        Me.TabPaneAddItem.Pages.AddRange(New DevExpress.XtraBars.Navigation.NavigationPageBase() {Me.TabNavigationPageAddInventoryItem, Me.TabNavigationPageLotInformation})
+        Me.TabPaneAddItem.Pages.AddRange(New DevExpress.XtraBars.Navigation.NavigationPageBase() {Me.TabNavigationPageAddInventoryItem, Me.TabNavigationPageLotInformation, Me.TabNavigationPageItemTransactionHistrory})
         Me.TabPaneAddItem.RegularSize = New System.Drawing.Size(500, 249)
         Me.TabPaneAddItem.SelectedPage = Me.TabNavigationPageAddInventoryItem
         Me.TabPaneAddItem.Size = New System.Drawing.Size(500, 249)
@@ -386,7 +393,7 @@ Partial Class EditInventoryItems
         Me.TabNavigationPageLotInformation.Caption = "Lot Information"
         Me.TabNavigationPageLotInformation.Controls.Add(Me.SimpleButtonSave2)
         Me.TabNavigationPageLotInformation.Controls.Add(Me.SimpleButtonAddLot)
-        Me.TabNavigationPageLotInformation.Controls.Add(Me.GridControl1)
+        Me.TabNavigationPageLotInformation.Controls.Add(Me.GridControlLots)
         Me.TabNavigationPageLotInformation.Controls.Add(Me.LabelControl9)
         Me.TabNavigationPageLotInformation.Controls.Add(Me.DateTimePickerExpirationDate)
         Me.TabNavigationPageLotInformation.Controls.Add(Me.LabelControl8)
@@ -413,20 +420,20 @@ Partial Class EditInventoryItems
         Me.SimpleButtonAddLot.TabIndex = 7
         Me.SimpleButtonAddLot.Text = "Add Lot"
         '
-        'GridControl1
+        'GridControlLots
         '
-        Me.GridControl1.Location = New System.Drawing.Point(3, 50)
-        Me.GridControl1.MainView = Me.GridView1
-        Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(471, 148)
-        Me.GridControl1.TabIndex = 6
-        Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
+        Me.GridControlLots.Location = New System.Drawing.Point(3, 50)
+        Me.GridControlLots.MainView = Me.GridViewLots
+        Me.GridControlLots.Name = "GridControlLots"
+        Me.GridControlLots.Size = New System.Drawing.Size(471, 148)
+        Me.GridControlLots.TabIndex = 6
+        Me.GridControlLots.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridViewLots})
         '
-        'GridView1
+        'GridViewLots
         '
-        Me.GridView1.GridControl = Me.GridControl1
-        Me.GridView1.Name = "GridView1"
-        Me.GridView1.OptionsView.ShowGroupPanel = False
+        Me.GridViewLots.GridControl = Me.GridControlLots
+        Me.GridViewLots.Name = "GridViewLots"
+        Me.GridViewLots.OptionsView.ShowGroupPanel = False
         '
         'LabelControl9
         '
@@ -474,9 +481,32 @@ Partial Class EditInventoryItems
         Me.TextBoxLotNumber.Size = New System.Drawing.Size(130, 21)
         Me.TextBoxLotNumber.TabIndex = 0
         '
+        'TabNavigationPageItemTransactionHistrory
+        '
+        Me.TabNavigationPageItemTransactionHistrory.Caption = "Transaction History"
+        Me.TabNavigationPageItemTransactionHistrory.Controls.Add(Me.GridControl1)
+        Me.TabNavigationPageItemTransactionHistrory.Name = "TabNavigationPageItemTransactionHistrory"
+        Me.TabNavigationPageItemTransactionHistrory.Size = New System.Drawing.Size(482, 204)
+        '
         'ItemsBindingSource
         '
         Me.ItemsBindingSource.DataSource = GetType(SwatInc.Inventory.Nova.Items)
+        '
+        'GridControl1
+        '
+        Me.GridControl1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.GridControl1.Location = New System.Drawing.Point(0, 0)
+        Me.GridControl1.MainView = Me.GridView1
+        Me.GridControl1.Name = "GridControl1"
+        Me.GridControl1.Size = New System.Drawing.Size(482, 204)
+        Me.GridControl1.TabIndex = 0
+        Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
+        '
+        'GridView1
+        '
+        Me.GridView1.GridControl = Me.GridControl1
+        Me.GridView1.Name = "GridView1"
+        Me.GridView1.OptionsView.ShowGroupPanel = False
         '
         'EditInventoryItems
         '
@@ -512,9 +542,12 @@ Partial Class EditInventoryItems
         CType(Me.TextEditItemName.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabNavigationPageLotInformation.ResumeLayout(False)
         Me.TabNavigationPageLotInformation.PerformLayout()
+        CType(Me.GridControlLots, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GridViewLots, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.TabNavigationPageItemTransactionHistrory.ResumeLayout(False)
+        CType(Me.ItemsBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ItemsBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -543,8 +576,8 @@ Partial Class EditInventoryItems
     Friend WithEvents LabelControl3 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents TabNavigationPageLotInformation As DevExpress.XtraBars.Navigation.TabNavigationPage
     Friend WithEvents SimpleButtonAddLot As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents GridControl1 As DevExpress.XtraGrid.GridControl
-    Friend WithEvents GridView1 As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents GridControlLots As DevExpress.XtraGrid.GridControl
+    Friend WithEvents GridViewLots As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents LabelControl9 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents DateTimePickerExpirationDate As DateTimePicker
     Friend WithEvents LabelControl8 As DevExpress.XtraEditors.LabelControl
@@ -560,4 +593,7 @@ Partial Class EditInventoryItems
     Friend WithEvents SimpleButton1 As DevExpress.XtraEditors.SimpleButton
     Private WithEvents LookUpEditPackSize As DevExpress.XtraEditors.LookUpEdit
     Friend WithEvents PackSizesBindingSource As BindingSource
+    Friend WithEvents TabNavigationPageItemTransactionHistrory As DevExpress.XtraBars.Navigation.TabNavigationPage
+    Friend WithEvents GridControl1 As DevExpress.XtraGrid.GridControl
+    Friend WithEvents GridView1 As DevExpress.XtraGrid.Views.Grid.GridView
 End Class

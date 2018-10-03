@@ -47,7 +47,7 @@ Public Class EditInventoryItems
             Case Keys.Delete
                 If TabPaneAddItem.SelectedPage.Name = "TabNavigationPageLotInformation" And GridViewInFocus = True Then
 
-                    GridView1.DeleteSelectedRows()
+                    GridViewLots.DeleteSelectedRows()
                     MsgBox(EditArgs.LotsCollection.Count)
                 End If
         End Select
@@ -61,11 +61,11 @@ Public Class EditInventoryItems
         Me.LookUpEditPackSize.EditValue = LookUpEditPackSize.Properties.GetKeyValueByDisplayText(EditArgs.PackSize)
     End Sub
 
-    Private Sub GridView1_GotFocus(sender As Object, e As EventArgs) Handles GridView1.GotFocus
+    Private Sub GridView1_GotFocus(sender As Object, e As EventArgs) Handles GridViewLots.GotFocus
         GridViewInFocus = True
     End Sub
 
-    Private Sub GridView1_LostFocus(sender As Object, e As EventArgs) Handles GridView1.LostFocus
+    Private Sub GridView1_LostFocus(sender As Object, e As EventArgs) Handles GridViewLots.LostFocus
         GridViewInFocus = False
     End Sub
 
@@ -183,7 +183,7 @@ Public Class EditInventoryItems
     Private Sub SetupEditingItem(ByVal sender As Object, e As InventoryItemUpdateEventArgs)
         Me.TextEditItemName.Text = e.ItemName
         Me.TextEditCatalogNumber.Text = e.CatalogNumber
-        Me.GridControl1.DataSource = e.LotsCollection
+        Me.GridControlLots.DataSource = e.LotsCollection
     End Sub
 
     Private Sub SimpleButtonAddLot_Click(sender As Object, e As EventArgs) Handles SimpleButtonAddLot.Click
