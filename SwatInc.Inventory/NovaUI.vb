@@ -12,13 +12,13 @@
     Friend WithEvents Labs As DevExpress.XtraBars.BarButtonItem
     Dim ActiveLaboratory As New ActiveLaboratoryEventArgs
 
-    Public Event ActiveLaboratoryChanged(ByVal sender As Object, e As ActiveLaboratoryEventArgs)
+    Public Shared Event OnActiveLaboratoryChanged(ByVal sender As Object, e As ActiveLaboratoryEventArgs)
 
     Public Sub RaiseEventActiveLaboratoryChanged()
-        RaiseEvent ActiveLaboratoryChanged(Me, ActiveLaboratory)
+        RaiseEvent OnActiveLaboratoryChanged(Me, ActiveLaboratory)
     End Sub
 
-    Private Sub SelectActiveLaboratory(ByVal sender As Object, ByVal e As ActiveLaboratoryEventArgs) Handles Me.ActiveLaboratoryChanged
+    Private Sub SelectActiveLaboratory(ByVal sender As Object, ByVal e As ActiveLaboratoryEventArgs) Handles Me.OnActiveLaboratoryChanged
         BarButtonItemSelectLaboratory.Glyph = e.LaboratoryLogo
         BarButtonItemSelectLaboratory.Caption = e.LaboratoryName
         BarStaticItemSelectedLaboratoryName.Caption = "Laboratory: " & e.LaboratoryName
@@ -42,7 +42,7 @@
         Next
 
         e.LaboratoryName = My.Resources.DefaultLabName
-        RaiseEvent ActiveLaboratoryChanged(Me, e)
+        RaiseEvent OnActiveLaboratoryChanged(Me, e)
 
     End Sub
 
@@ -73,7 +73,7 @@
     Private Sub BarButtonItemNewItem_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BarButtonItemNewItem.ItemClick
         Dim AddNewItem As New AddItem(dbContext, Vendors, Units, ItemTypes) With {.MdiParent = Me, .ShowInTaskbar = False, .StartPosition = FormStartPosition.CenterScreen}
         AddNewItem.Show()
-        RaiseEvent ActiveLaboratoryChanged(Me, ActiveLaboratory)
+        RaiseEvent OnActiveLaboratoryChanged(Me, ActiveLaboratory)
     End Sub
 
     Private Sub BarButtonReorder_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BarButtonReorder.ItemClick
@@ -85,7 +85,7 @@
 
     Private Sub LaboratorySeclection(ByVal sender As Object, ByVal e As DevExpress.XtraBars.ItemClickEventArgs)
         ActiveLaboratory.LaboratoryName = e.Item.Name
-        RaiseEvent ActiveLaboratoryChanged(Me, ActiveLaboratory)
+        RaiseEvent OnActiveLaboratoryChanged(Me, ActiveLaboratory)
     End Sub
 
     Private Sub LoadStartUpData()

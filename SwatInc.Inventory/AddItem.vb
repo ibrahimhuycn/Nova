@@ -29,7 +29,7 @@ Public Class AddItem
         ItemTypesBindingSource.DataSource = context.ItemType.Local
         UnitsBindingSource.DataSource = context.Units.Local
 
-        AddHandler NovaUI.ActiveLaboratoryChanged, AddressOf LabChanged
+        AddHandler NovaUI.OnActiveLaboratoryChanged, AddressOf LabChanged
 
     End Sub
 

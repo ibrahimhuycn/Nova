@@ -155,7 +155,7 @@
     <Compile Include="Inventory.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InventoryItemEditEventArgs.vb" />
+    <Compile Include="InventoryItemUpdateEventArgs.vb" />
     <Compile Include="LotsCollectionForItem.vb" />
     <Compile Include="Migrations\201809151641020_AddTransactionTable.Designer.vb">
       <DependentUpon>201809151641020_AddTransactionTable.vb</DependentUpon>

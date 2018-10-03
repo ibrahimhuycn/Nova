@@ -2,7 +2,7 @@
 
 Public Class EditInventoryItems
     Public _dbContext As Nova.NovaContext
-    Dim EditArgs As InventoryItemEditEventArgs
+    Dim EditArgs As InventoryItemUpdateEventArgs
     Dim GridViewInFocus As Boolean = False
 
     Public Sub New(Optional e As EventArgs = Nothing)
@@ -40,7 +40,7 @@ Public Class EditInventoryItems
         End If
     End Sub
 
-    Public Event InventoryItemSaved(ByVal sender As Object, ByVal e As InventoryItemEditEventArgs)
+    Public Shared Event OnInventoryListUpdated(ByVal sender As Object, ByVal e As InventoryItemUpdateEventArgs)
 
     Private Sub EditInventoryItems_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
         Select Case e.KeyCode
@@ -75,7 +75,7 @@ Public Class EditInventoryItems
         Dim ServerLotNumbers() As String
         Dim FinishedInserts As Boolean = False
 
-        Dim SaveData As New InventoryItemEditEventArgs With {.ItemName = Me.TextEditItemName.Text,
+        Dim DataUpdate As New InventoryItemUpdateEventArgs With {.ItemName = Me.TextEditItemName.Text,
                             .Lab = LookUpEditLaboratory.Text,
                             .CatalogNumber = Me.TextEditCatalogNumber.Text,
                             .ItemType = Me.LookUpEditItemType.Text,
@@ -91,9 +91,9 @@ Public Class EditInventoryItems
                             .VendorId = LookUpEditVendor.EditValue}
 
         'Save Item
-        Dim ItemSaveHandler = _dbContext.Items.Find(SaveData.UserSelectedItemId)
-        ItemSaveHandler.CatalogNumber = SaveData.CatalogNumber
-        ItemSaveHandler.Name = SaveData.ItemName
+        Dim ItemSaveHandler = _dbContext.Items.Find(DataUpdate.UserSelectedItemId)
+        ItemSaveHandler.CatalogNumber = DataUpdate.CatalogNumber
+        ItemSaveHandler.Name = DataUpdate.ItemName
 
         'Updating foreign keys In dbo.Items
         Using sqlUpdateQuery As New Nova.NovaContext
@@ -102,16 +102,16 @@ Public Class EditInventoryItems
                 String.Format(
                 "UPDATE [dbo].[Items] SET [Items].[PackSize_Id]={0},[Items].[Type_Id]={1},[Items].[Unit_Id]={2},[Items].[Vendor_Id]={3}" &
                 " WHERE [Items].[Id]={4}",
-                SaveData.PackSizeId,
-                SaveData.ItemTypeId,
-                SaveData.UnitsId,
-                SaveData.VendorId,
+                DataUpdate.PackSizeId,
+                DataUpdate.ItemTypeId,
+                DataUpdate.UnitsId,
+                DataUpdate.VendorId,
                 EditArgs.UserSelectedItemId))
 
             'Update assigned lab information for the item
             sqlUpdateQuery.Database.ExecuteSqlCommand(
                 String.Format(
-                "UPDATE Laboratory_Items SET Laboratory_Id = {0} WHERE Item_Id = {1}", SaveData.LabId, EditArgs.UserSelectedItemId))
+                "UPDATE Laboratory_Items SET Laboratory_Id = {0} WHERE Item_Id = {1}", DataUpdate.LabId, EditArgs.UserSelectedItemId))
         End Using
 
         'Save Lots
@@ -120,7 +120,7 @@ Public Class EditInventoryItems
         '3.SaveData: Present | Server: Present| Action: Update to server
         '4.SaveData: Present | Server: Absent | Action: Insert
 
-        Dim LotNumber = From L In _dbContext.Lots Where L.Item.Id = SaveData.UserSelectedItemId Select New With {Key .LotNumber = L.Id}
+        Dim LotNumber = From L In _dbContext.Lots Where L.Item.Id = DataUpdate.UserSelectedItemId Select New With {Key .LotNumber = L.Id}
 
         For Each sLot In LotNumber   'Iterate lots on server
             If DelimitedLotNumbersFromServer = Nothing Then
@@ -133,7 +133,7 @@ Public Class EditInventoryItems
 
         For Each LN In ServerLotNumbers
             Dim FoundMatchWithServerLot As Boolean = False
-            For Each lot In SaveData.LotsCollection  'Iterate LOTS in SaveData
+            For Each lot In DataUpdate.LotsCollection  'Iterate LOTS in SaveData
 
                 Dim NewLot As Boolean = True
                 'Look for new lots to insert.
@@ -176,9 +176,11 @@ Public Class EditInventoryItems
 
         'Save Changes to db
         _dbContext.SaveChanges()
+
+        RaiseEvent OnInventoryListUpdated(Me, DataUpdate)
     End Sub
 
-    Private Sub SetupEditingItem(sender As Object, e As InventoryItemEditEventArgs)
+    Private Sub SetupEditingItem(ByVal sender As Object, e As InventoryItemUpdateEventArgs)
         Me.TextEditItemName.Text = e.ItemName
         Me.TextEditCatalogNumber.Text = e.CatalogNumber
         Me.GridControl1.DataSource = e.LotsCollection

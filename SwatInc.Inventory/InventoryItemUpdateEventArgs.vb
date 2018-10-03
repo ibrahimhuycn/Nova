@@ -1,6 +1,6 @@
 ﻿Imports System.ComponentModel
 
-Public Class InventoryItemEditEventArgs
+Public Class InventoryItemUpdateEventArgs
     Inherits EventArgs
     Public Property CatalogNumber As String
     Public Property ItemName As String
