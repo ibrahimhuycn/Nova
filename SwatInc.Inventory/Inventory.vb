@@ -68,6 +68,7 @@ Public Class Inventory
     Private Sub RefreshEffectedItem(sender As Object, e As InventoryItemUpdateEventArgs)
         'TODO: This needs to load only the effected Item. I am gonna load the whole table for the time being
         ItemDataLoadRequired()
+        GridView1.ExpandAllGroups()
 
     End Sub
 
