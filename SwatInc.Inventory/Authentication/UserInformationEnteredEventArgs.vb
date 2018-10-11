@@ -3,7 +3,9 @@
 Public Class UserInformationEnteredEventArgs
     Inherits AuthenticationEventArgs
     Private _authenticated As Boolean
+    Private _userExists
     Private _userHash As String
+    Private _validUsername As Boolean = False
 
     Public Sub New()
         MyBase.New
@@ -18,7 +20,7 @@ Public Class UserInformationEnteredEventArgs
             Dim users = From u In dbContext.Users
                         Where u.Username = Value
                         Select u
-            If Not users.Count > 1 Then
+            If Not users.Count > 1 And Not users.Count = 0 Then
                 For Each user In users
 
                     AccessLevel = user.AccessLevel
@@ -26,12 +28,15 @@ Public Class UserInformationEnteredEventArgs
                     FullName = user.Name
                     _userHash = user.PasswordHash
                 Next
+                _validUsername = True
+                _userExists = True
+                UserName = Value
+            ElseIf users.Count = 0 Then
+                _validUsername = False
             Else
                 MsgBox("Duplicate usernames present in the database. Please contact your database administrator!", vbCritical, "User Authentication")
-
+                _validUsername = False
             End If
-
-            UserName = Value
 
         End Set
     End Property
@@ -50,8 +55,14 @@ Public Class UserInformationEnteredEventArgs
 
     Public WriteOnly Property PassPhrase As String
         Set
-            _authenticated = Hashing.VerifyPassword(Value, UserHash)
+            If _validUsername = True Then _authenticated = Hashing.VerifyPassword(Value, UserHash)
         End Set
+    End Property
+
+    Public ReadOnly Property UserExists As Boolean
+        Get
+            Return _userExists
+        End Get
     End Property
 
     Public Shared Function GetParent(ByVal e As UserInformationEnteredEventArgs)

@@ -11,8 +11,10 @@ Public Class Authenticate
     Private Event OnBeginUserAuthentication(ByVal sender As Object, ByVal e As UserInformationEnteredEventArgs)
 
     Function AuthenticateUser(ByVal sender As Object, ByVal e As UserInformationEnteredEventArgs) Handles Me.OnBeginUserAuthentication
-        If UserCredientials.Authenticated = True Then
+        If e.Authenticated = True Then
             RaiseEvent OnUserAuthenticated(Me, UserCredientials)
+        ElseIf e.UserExists = False Then
+            MsgBox("Username does not exist. Enter a different username or request for new a username.", vbInformation, "User Authentication")
         Else
             MsgBox("There was an error with your Username/Password combination. Please try again.", vbInformation, "Authentication")
         End If
