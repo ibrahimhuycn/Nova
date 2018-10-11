@@ -1,26 +1,21 @@
 ﻿Imports SwatIncNotifications
 
 Public Class Authenticate
+
     'PENDING TASKS.
     'Use SwatIncCrypto to check whether user provided password and Hash retrieved from server match.
+    Dim UserCredientials As New UserInformationEnteredEventArgs
 
-    Dim isPasswordEntered As Boolean
-    Dim isUserAuthenticated As Boolean
+    Public Shared Event OnUserAuthenticated(ByVal sender As Object, ByVal e As UserInformationEnteredEventArgs)
 
-    Dim UserCredientials As New AuthenticationEventArgs
+    Private Event OnBeginUserAuthentication(ByVal sender As Object, ByVal e As UserInformationEnteredEventArgs)
 
-    Public Shared Event OnBeginUserAuthentication(ByVal sender As Object, ByVal e As AuthenticationEventArgs)
-
-    Public Shared Event OnUserAuthenticated(ByVal sender As Object, ByVal e As AuthenticationEventArgs)
-
-    Public Shared Event OnUserInformationEntered(ByVal sender As Object, ByVal e As UserInformationEnteredEventArgs)
-
-    Function AuthenticateUser()
-
-        'Todo: USERNAME SHOULD BE AN INDEXED UNIQUE FIELD IN DB
-        'After authentication
-        isUserAuthenticated = True
-        Return isUserAuthenticated
+    Function AuthenticateUser(ByVal sender As Object, ByVal e As UserInformationEnteredEventArgs) Handles Me.OnBeginUserAuthentication
+        If UserCredientials.Authenticated = True Then
+            RaiseEvent OnUserAuthenticated(Me, UserCredientials)
+        Else
+            MsgBox("There was an error with your Username/Password combination. Please try again.", vbInformation, "Authentication")
+        End If
     End Function
 
     Private Sub Authenticate_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
@@ -34,25 +29,21 @@ Public Class Authenticate
         Environment.Exit(1)
     End Sub
 
-    Private Sub GetherUserEnteredData(ByVal sender As Object, ByVal e As EventArgs) Handles Me.OnUserInformationEntered
-
+    Private Sub LogIn_Click(sender As Object, e As EventArgs) Handles LogIn.Click
+        RaiseEvent OnBeginUserAuthentication(Me, UserCredientials)
     End Sub
 
-    Private Sub LogIn_Click(sender As Object, e As EventArgs) Handles LogIn.Click
-
-        RaiseEvent OnBeginUserAuthentication(Me, UserCredientials)
-        If isUserAuthenticated = True Then
-            'Enabling Parent ribbon
-            NovaUI.EnableRibbon(True)
-            Dim notify As New Notification
-            notify.ShowNotification(NotificationMessage:="User authenticated successfully!",
-                NotificationTitle:="Authentication",
-                NotficationPNG_IconName:="GreenTick",
-                Heading:="Welcome USERNAME")
-            'Notification.Show()
-            Close()
-            Dispose()
-        End If
+    Private Sub UserAuthenticated(ByVal sender As Object, ByVal e As UserInformationEnteredEventArgs) Handles Me.OnUserAuthenticated
+        'Enabling Parent ribbon
+        NovaUI.EnableRibbon(True)
+        Dim notify As New Notification
+        notify.ShowNotification(NotificationMessage:="User authenticated successfully!",
+            NotificationTitle:="Authentication",
+            NotficationPNG_IconName:="GreenTick",
+            Heading:="Welcome USERNAME")
+        'Notification.Show()
+        Close()
+        Dispose()
     End Sub
 
 #Region "User Interface Setup"
@@ -77,14 +68,12 @@ Public Class Authenticate
 
     Private Sub Password_LostFocus(ByVal sender As Object, ByVal e As EventArgs) Handles Password.LostFocus
         'Initialize IS_PASSWORD_ENTERED variable
-        isPasswordEntered = False
 
         'Check whether password was entered.
         If Password.Text = "" Or Password.Text = "Password" Then
-            isPasswordEntered = False
             Password.Text = "Password"
         Else
-            isPasswordEntered = True
+            UserCredientials.PassPhrase = Password.Text
         End If
 
     End Sub
@@ -106,7 +95,7 @@ Public Class Authenticate
         If UserName.Text = "" Or UserName.Text = "Username" Then
             UserName.Text = "Username"
         Else
-            RaiseEvent OnUserInformationEntered(Me, New UserInformationEnteredEventArgs With {.EnteredUserName = UserName.Text})
+            UserCredientials.EnteredUserName = UserName.Text
         End If
     End Sub
 

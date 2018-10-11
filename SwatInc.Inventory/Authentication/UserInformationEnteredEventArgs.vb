@@ -2,7 +2,7 @@
 
 Public Class UserInformationEnteredEventArgs
     Inherits AuthenticationEventArgs
-    Private _generatedHash As String
+    Private _authenticated As Boolean
     Private _userHash As String
 
     Public Sub New()
@@ -14,21 +14,24 @@ Public Class UserInformationEnteredEventArgs
             Return UserName
         End Get
         Set
+            'Todo: USERNAME SHOULD BE AN INDEXED UNIQUE FIELD IN DB
             Dim users = From u In dbContext.Users
-                        Where u.Username = UserName
+                        Where u.Username = Value
                         Select u
-
             If Not users.Count > 1 Then
                 For Each user In users
-                    Me.AccessLevel = user.AccessLevel
-                    Me.Designation = user.Designation
-                    Me.FullName = user.Name
-                    Me._userHash = user.PasswordHash
+
+                    AccessLevel = user.AccessLevel
+                    Designation = user.Designation
+                    FullName = user.Name
+                    _userHash = user.PasswordHash
                 Next
-                UserName = Value
             Else
                 MsgBox("Duplicate usernames present in the database. Please contact your database administrator!", vbCritical, "User Authentication")
+
             End If
+
+            UserName = Value
 
         End Set
     End Property
@@ -39,15 +42,15 @@ Public Class UserInformationEnteredEventArgs
         End Get
     End Property
 
-    Public ReadOnly Property GeneratedHash As String
+    Public ReadOnly Property Authenticated As Boolean
         Get
-            Return _generatedHash
+            Return _authenticated
         End Get
     End Property
 
     Public WriteOnly Property PassPhrase As String
         Set
-            _generatedHash = Hashing.CreateHashSHA512(Value)
+            _authenticated = Hashing.VerifyPassword(Value, UserHash)
         End Set
     End Property
 
