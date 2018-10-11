@@ -65,8 +65,8 @@
 
     Private Sub BarButtonItemInventoryList_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BarButtonItemInventoryList.ItemClick
         Dim InventoryList As New Inventory With {.MdiParent = Me,
-    .StartPosition = FormStartPosition.CenterParent,
-    .ShowInTaskbar = False}
+                                    .StartPosition = FormStartPosition.CenterParent,
+                                    .ShowInTaskbar = False}
         InventoryList.Show()
     End Sub
 
