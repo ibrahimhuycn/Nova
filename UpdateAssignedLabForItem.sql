@@ -1,0 +1,1 @@
+﻿UPDATE Laboratory_Items SET Laboratory_Id = @NewLabId WHERE Item_Id = @SelectedItemId

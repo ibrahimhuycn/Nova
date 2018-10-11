@@ -2,6 +2,7 @@
 
     Public Class Items
         Public Property CatalogNumber As String
+        Public Property DefaultLocation As Locations
         Public Property Id As Integer
         Public Property Name As String
         Public Property PackSize As PackSizes
