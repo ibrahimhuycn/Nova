@@ -137,13 +137,14 @@
     <Compile Include="AddItem.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Authenticate.designer.vb">
+    <Compile Include="Authentication\Authenticate.designer.vb">
       <DependentUpon>Authenticate.vb</DependentUpon>
     </Compile>
-    <Compile Include="Authenticate.vb">
+    <Compile Include="Authentication\Authenticate.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AuthenticationEventArgs.vb" />
+    <Compile Include="Authentication\AuthenticationEventArgs.vb" />
+    <Compile Include="Authentication\UserInformationEnteredEventArgs.vb" />
     <Compile Include="EditInventoryItems.Designer.vb">
       <DependentUpon>EditInventoryItems.vb</DependentUpon>
     </Compile>
@@ -325,7 +326,7 @@
     <EmbeddedResource Include="AddItem.resx">
       <DependentUpon>AddItem.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Authenticate.resx">
+    <EmbeddedResource Include="Authentication\Authenticate.resx">
       <DependentUpon>Authenticate.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditInventoryItems.resx">

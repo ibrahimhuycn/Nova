@@ -6,12 +6,18 @@ Public Class Authenticate
 
     Dim isPasswordEntered As Boolean
     Dim isUserAuthenticated As Boolean
-    Dim isUsernameEntered As Boolean
 
-    Public Shared Event UserAuthenticated(ByVal sender As Object, ByVal e As AuthenticationEventArgs)
+    Dim UserCredientials As New AuthenticationEventArgs
+
+    Public Shared Event OnBeginUserAuthentication(ByVal sender As Object, ByVal e As AuthenticationEventArgs)
+
+    Public Shared Event OnUserAuthenticated(ByVal sender As Object, ByVal e As AuthenticationEventArgs)
+
+    Public Shared Event OnUserInformationEntered(ByVal sender As Object, ByVal e As UserInformationEnteredEventArgs)
 
     Function AuthenticateUser()
 
+        'Todo: USERNAME SHOULD BE AN INDEXED UNIQUE FIELD IN DB
         'After authentication
         isUserAuthenticated = True
         Return isUserAuthenticated
@@ -28,9 +34,13 @@ Public Class Authenticate
         Environment.Exit(1)
     End Sub
 
+    Private Sub GetherUserEnteredData(ByVal sender As Object, ByVal e As EventArgs) Handles Me.OnUserInformationEntered
+
+    End Sub
+
     Private Sub LogIn_Click(sender As Object, e As EventArgs) Handles LogIn.Click
 
-        AuthenticateUser()
+        RaiseEvent OnBeginUserAuthentication(Me, UserCredientials)
         If isUserAuthenticated = True Then
             'Enabling Parent ribbon
             NovaUI.EnableRibbon(True)
@@ -45,7 +55,7 @@ Public Class Authenticate
         End If
     End Sub
 
-#Region "UI"
+#Region "User Interface Setup"
 
     Public Sub ParentCenter()
         Dim ParentWidth As Single = (NovaUI.ClientSize.Width - Width) / 2
@@ -93,14 +103,10 @@ Public Class Authenticate
         '1) Giving feedback on whether username was entered.
         '2) Setting default text if field is empty on lost focus.
 
-        'Initialize IS_USERNAME_ENTERED variable as False
-        isUsernameEntered = False
-
         If UserName.Text = "" Or UserName.Text = "Username" Then
-            isUsernameEntered = False
             UserName.Text = "Username"
         Else
-            isUsernameEntered = True
+            RaiseEvent OnUserInformationEntered(Me, New UserInformationEnteredEventArgs With {.EnteredUserName = UserName.Text})
         End If
     End Sub
 
