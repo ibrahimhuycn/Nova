@@ -143,6 +143,7 @@
     <Compile Include="Authenticate.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="AuthenticationEventArgs.vb" />
     <Compile Include="EditInventoryItems.Designer.vb">
       <DependentUpon>EditInventoryItems.vb</DependentUpon>
     </Compile>

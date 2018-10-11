@@ -8,19 +8,14 @@ Public Class Authenticate
     Dim isUserAuthenticated As Boolean
     Dim isUsernameEntered As Boolean
 
+    Public Shared Event UserAuthenticated(ByVal sender As Object, ByVal e As AuthenticationEventArgs)
+
     Function AuthenticateUser()
 
         'After authentication
         isUserAuthenticated = True
         Return isUserAuthenticated
     End Function
-
-    Public Sub ParentCenter()
-        Dim ParentWidth As Single = (NovaUI.ClientSize.Width - Width) / 2
-        Dim ParentHeight As Single = ((NovaUI.ClientSize.Height - Height) / 2) - 100
-        SetBounds(ParentWidth, ParentHeight, Width, Height)
-        MdiParent = NovaUI
-    End Sub
 
     Private Sub Authenticate_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
         'CENTER LOGIN FORM ONTO THE PARENT FORM, FormLisMini
@@ -48,6 +43,15 @@ Public Class Authenticate
             Close()
             Dispose()
         End If
+    End Sub
+
+#Region "UI"
+
+    Public Sub ParentCenter()
+        Dim ParentWidth As Single = (NovaUI.ClientSize.Width - Width) / 2
+        Dim ParentHeight As Single = ((NovaUI.ClientSize.Height - Height) / 2) - 100
+        SetBounds(ParentWidth, ParentHeight, Width, Height)
+        MdiParent = NovaUI
     End Sub
 
     Private Sub Password_GotFocus(ByVal sender As Object, ByVal e As EventArgs) Handles Password.GotFocus
@@ -99,5 +103,7 @@ Public Class Authenticate
             isUsernameEntered = True
         End If
     End Sub
+
+#End Region
 
 End Class

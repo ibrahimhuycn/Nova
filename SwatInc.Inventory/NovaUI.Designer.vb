@@ -50,6 +50,10 @@ Partial Class NovaUI
         Me.RibbonPageGroup3 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.RibbonStatusBar = New DevExpress.XtraBars.Ribbon.RibbonStatusBar()
         Me.RibbonPageGroup2 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
+        Me.RibbonPageCategory1 = New DevExpress.XtraBars.Ribbon.RibbonPageCategory()
+        Me.RibbonPage2 = New DevExpress.XtraBars.Ribbon.RibbonPage()
+        Me.RibbonPageGroup1 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
+        Me.ShowEmptyLots = New DevExpress.XtraBars.BarToggleSwitchItem()
         CType(Me.NovaRibbon, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NovaMenu, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RequestsMenu, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -65,10 +69,11 @@ Partial Class NovaUI
         '
         Me.NovaRibbon.ApplicationButtonDropDownControl = Me.NovaMenu
         Me.NovaRibbon.ExpandCollapseItem.Id = 0
-        Me.NovaRibbon.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.NovaRibbon.ExpandCollapseItem, Me.BarButtonRequests, Me.BarButtonInventory, Me.BarButtonAddUser, Me.BarButtonChangePassword, Me.BarButtonResetPassword, Me.BarButtonDashboard, Me.BarButtonReorder, Me.BarButtonMakePurchaseOrder, Me.BarButtonItemSelectLaboratory, Me.BarStaticItemLoggedInUser, Me.BarStaticItemSelectedLaboratoryName, Me.BarStaticItemCompanyName, Me.BarButtonItemLogOut, Me.BarButtonItemNewItem, Me.BarButtonItemInventoryList})
+        Me.NovaRibbon.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.NovaRibbon.ExpandCollapseItem, Me.BarButtonRequests, Me.BarButtonInventory, Me.BarButtonAddUser, Me.BarButtonChangePassword, Me.BarButtonResetPassword, Me.BarButtonDashboard, Me.BarButtonReorder, Me.BarButtonMakePurchaseOrder, Me.BarButtonItemSelectLaboratory, Me.BarStaticItemLoggedInUser, Me.BarStaticItemSelectedLaboratoryName, Me.BarStaticItemCompanyName, Me.BarButtonItemLogOut, Me.BarButtonItemNewItem, Me.BarButtonItemInventoryList, Me.ShowEmptyLots})
         Me.NovaRibbon.Location = New System.Drawing.Point(0, 0)
-        Me.NovaRibbon.MaxItemId = 2
+        Me.NovaRibbon.MaxItemId = 6
         Me.NovaRibbon.Name = "NovaRibbon"
+        Me.NovaRibbon.PageCategories.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageCategory() {Me.RibbonPageCategory1})
         Me.NovaRibbon.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.RibbonPage1, Me.Help})
         Me.NovaRibbon.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2007
         Me.NovaRibbon.Size = New System.Drawing.Size(1208, 143)
@@ -270,6 +275,30 @@ Partial Class NovaUI
         '
         Me.RibbonPageGroup2.Name = "RibbonPageGroup2"
         '
+        'RibbonPageCategory1
+        '
+        Me.RibbonPageCategory1.Name = "RibbonPageCategory1"
+        Me.RibbonPageCategory1.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.RibbonPage2})
+        Me.RibbonPageCategory1.Text = "Inventory"
+        '
+        'RibbonPage2
+        '
+        Me.RibbonPage2.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.RibbonPageGroup1})
+        Me.RibbonPage2.Name = "RibbonPage2"
+        Me.RibbonPage2.Text = "Options"
+        '
+        'RibbonPageGroup1
+        '
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.ShowEmptyLots)
+        Me.RibbonPageGroup1.Name = "RibbonPageGroup1"
+        Me.RibbonPageGroup1.Text = "Inventory display"
+        '
+        'ShowEmptyLots
+        '
+        Me.ShowEmptyLots.Caption = "Show Empty Lots"
+        Me.ShowEmptyLots.Id = 5
+        Me.ShowEmptyLots.Name = "ShowEmptyLots"
+        '
         'NovaUI
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -322,4 +351,8 @@ Partial Class NovaUI
     Friend WithEvents InventoryMenu As DevExpress.XtraBars.PopupMenu
     Friend WithEvents BarButtonItemNewItem As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents BarButtonItemInventoryList As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents ShowEmptyLots As DevExpress.XtraBars.BarToggleSwitchItem
+    Friend WithEvents RibbonPageCategory1 As DevExpress.XtraBars.Ribbon.RibbonPageCategory
+    Friend WithEvents RibbonPage2 As DevExpress.XtraBars.Ribbon.RibbonPage
+    Friend WithEvents RibbonPageGroup1 As DevExpress.XtraBars.Ribbon.RibbonPageGroup
 End Class

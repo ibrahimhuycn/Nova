@@ -73,7 +73,7 @@ Partial Class Authenticate
         '
         'PictureBoxAuthenticateIcon
         '
-        Me.PictureBoxAuthenticateIcon.Image = My.Resources.Resources.Authenticate
+        Me.PictureBoxAuthenticateIcon.Image = Global.SwatInc.Inventory.My.Resources.Resources.Authenticate
         Me.PictureBoxAuthenticateIcon.Location = New System.Drawing.Point(8, 25)
         Me.PictureBoxAuthenticateIcon.Name = "PictureBoxAuthenticateIcon"
         Me.PictureBoxAuthenticateIcon.Size = New System.Drawing.Size(47, 53)
