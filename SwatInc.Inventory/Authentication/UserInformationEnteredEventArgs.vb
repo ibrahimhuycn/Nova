@@ -3,7 +3,7 @@
 Public Class UserInformationEnteredEventArgs
     Inherits AuthenticationEventArgs
     Private _authenticated As Boolean
-    Private _userExists
+    Private _userExists As Boolean
     Private _userHash As String
     Private _validUsername As Boolean = False
 
@@ -33,6 +33,7 @@ Public Class UserInformationEnteredEventArgs
                 UserName = Value
             ElseIf users.Count = 0 Then
                 _validUsername = False
+                _userExists = False
             Else
                 MsgBox("Duplicate usernames present in the database. Please contact your database administrator!", vbCritical, "User Authentication")
                 _validUsername = False
