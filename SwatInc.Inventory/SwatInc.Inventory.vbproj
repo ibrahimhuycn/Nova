@@ -271,6 +271,10 @@
       <DependentUpon>201810031739501_AddColumnDesignationToUsersTable.vb</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201810031739501_AddColumnDesignationToUsersTable.vb" />
+    <Compile Include="Migrations\201810131313118_AddFKLaboratoriesToStockLevelSettings.Designer.vb">
+      <DependentUpon>201810131313118_AddFKLaboratoriesToStockLevelSettings.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810131313118_AddFKLaboratoriesToStockLevelSettings.vb" />
     <Compile Include="Migrations\Configuration.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -418,6 +422,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810031739501_AddColumnDesignationToUsersTable.resx">
       <DependentUpon>201810031739501_AddColumnDesignationToUsersTable.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810131313118_AddFKLaboratoriesToStockLevelSettings.resx">
+      <DependentUpon>201810131313118_AddFKLaboratoriesToStockLevelSettings.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\licenses.licx" />
     <EmbeddedResource Include="My Project\Resources.resx">
