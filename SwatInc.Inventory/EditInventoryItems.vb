@@ -204,4 +204,24 @@ Public Class EditInventoryItems
         SaveData()
     End Sub
 
+    Private Sub UpdateCurrentStockLevels(ByVal sender As Object, ByVal e As InventoryItemUpdateEventArgs) Handles Me.OnInventoryListUpdated
+        Dim CurrentItemStockLevel As Integer = 0
+        For Each lot In e.LotsCollection
+            CurrentItemStockLevel += lot.Quantity
+        Next
+
+        'Assumes that there is a record in CurrentStockLevels table for Each Item.
+        'ELSE INSERT a new record
+        'TODO: When new item is created. If no lots are present. The Item current stock level is set as ZERO
+        'TODO: There should not be any items with not records in current stock levels table.
+        'TODO: *** Item_Id should be UNIQUE in CurrentStockLevels Table.
+        Using SqlQuery As New Nova.NovaContext
+            Dim RowsChanged As Integer =
+                SqlQuery.Database.ExecuteSqlCommand(
+                String.Format("UPDATE [dbo].[CurrentStockLevels] " &
+                "SET Present = {0} " &
+                "WHERE Item_Id={1}", CurrentItemStockLevel, e.UserSelectedItemId))
+        End Using
+    End Sub
+
 End Class
