@@ -151,7 +151,7 @@ Public Class EditInventoryItems
                             String.Format("INSERT INTO [dbo].[Lots] ([Id],[ExpirationDate],[Quantity],[Item_Id],[Location_Id])" &
                             " VALUES ('{0}',{1},{2},{3},{4})",
                             lot.LotNumber,
-                            lot.Expiry.ToString("dd-MM-yyyy"),
+                            lot.Expiry.ToString("yyyy-MM-dd"),
                             lot.Quantity,
                             EditArgs.UserSelectedItemId,
                             LocationId))

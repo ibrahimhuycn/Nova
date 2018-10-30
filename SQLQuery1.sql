@@ -1,0 +1,1 @@
+﻿SELECT CONVERT(datetime, '20170209');
